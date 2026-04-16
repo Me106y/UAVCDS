@@ -1,0 +1,110 @@
+2026-04-08 16:51:27,975 - __main__ - INFO - Registering MCP tools
+2026-04-08 16:51:27,976 - __main__ - INFO - Registered 10 tools
+2026-04-08 16:51:27,976 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 16:51:27,976 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 16:55:51,931 - __main__ - INFO - Registering MCP tools
+2026-04-08 16:55:51,932 - __main__ - INFO - Registered 10 tools
+2026-04-08 16:55:51,932 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 16:55:51,932 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 16:56:03,923 - __main__ - INFO - Registering MCP tools
+2026-04-08 16:56:03,924 - __main__ - INFO - Registered 10 tools
+2026-04-08 16:56:03,924 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 16:56:03,924 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 16:59:43,087 - __main__ - INFO - Registering MCP tools
+2026-04-08 16:59:43,088 - __main__ - INFO - Registered 10 tools
+2026-04-08 16:59:43,088 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 16:59:43,088 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 17:16:53,812 - __main__ - INFO - Registering MCP tools
+2026-04-08 17:16:53,813 - __main__ - INFO - Registered 10 tools
+2026-04-08 17:16:53,813 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 17:16:53,813 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 17:16:53,818 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-08 18:06:04,941 - __main__ - INFO - Registering MCP tools
+2026-04-08 18:06:04,941 - __main__ - INFO - Registered 10 tools
+2026-04-08 18:06:04,941 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 18:06:04,941 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 18:06:04,949 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-08 18:41:29,578 - __main__ - INFO - Registering MCP tools
+2026-04-08 18:41:29,579 - __main__ - INFO - Registered 10 tools
+2026-04-08 18:41:29,579 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 18:41:29,579 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 18:41:29,584 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-08 19:12:06,754 - __main__ - INFO - Registering MCP tools
+2026-04-08 19:12:06,755 - __main__ - INFO - Registered 10 tools
+2026-04-08 19:12:06,755 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 19:12:06,755 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 19:12:06,760 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-08 19:17:56,853 - __main__ - INFO - Registering MCP tools
+2026-04-08 19:17:56,854 - __main__ - INFO - Registered 10 tools
+2026-04-08 19:17:56,854 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 19:17:56,854 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 19:17:56,860 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-08 19:44:31,513 - __main__ - INFO - Registering MCP tools
+2026-04-08 19:44:31,513 - __main__ - INFO - Registered 10 tools
+2026-04-08 19:44:31,513 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 19:44:31,514 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 19:44:31,519 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-08 19:54:39,245 - __main__ - INFO - Registering MCP tools
+2026-04-08 19:54:39,246 - __main__ - INFO - Registered 10 tools
+2026-04-08 19:54:39,246 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-08 19:54:39,246 - __main__ - INFO - Server version: 0.1.0
+2026-04-08 19:54:39,251 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-14 16:34:36,049 - __main__ - INFO - Registering MCP tools
+2026-04-14 16:34:36,050 - __main__ - INFO - Registered 10 tools
+2026-04-14 16:34:36,050 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-14 16:34:36,050 - __main__ - INFO - Server version: 0.1.0
+2026-04-14 16:34:36,057 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-14 17:22:34,101 - __main__ - INFO - Registering MCP tools
+2026-04-14 17:22:34,101 - __main__ - INFO - Registered 10 tools
+2026-04-14 17:22:34,101 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-14 17:22:34,101 - __main__ - INFO - Server version: 0.1.0
+2026-04-14 17:22:34,107 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-14 17:22:34,110 - __main__ - INFO - Handling call_tool request: plan_waypoint_mission
+2026-04-14 17:22:34,110 - WaypointPlanningTool - INFO - Planning waypoint mission with 4 waypoints
+2026-04-14 17:22:34,110 - __main__ - ERROR - Error executing tool plan_waypoint_mission: 1 validation error for CallToolResult
+isError
+  Input should be a valid boolean [type=bool_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/bool_type
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/src/dji_waypoint_mcp/server.py", line 81, in handle_call_tool
+    return CallToolResult(
+        content=[
+    ...<5 lines>...
+        isError=result.get("error", False)
+    )
+  File "/Users/Zhuanz/.local/lib/python3.14/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CallToolResult
+isError
+  Input should be a valid boolean [type=bool_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/bool_type
+2026-04-15 15:32:55,121 - __main__ - INFO - Registering MCP tools
+2026-04-15 15:32:55,121 - __main__ - INFO - Registered 10 tools
+2026-04-15 15:32:55,121 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-15 15:32:55,121 - __main__ - INFO - Server version: 0.1.0
+2026-04-15 15:32:55,126 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-15 15:32:55,129 - __main__ - INFO - Handling call_tool request: plan_waypoint_mission
+2026-04-15 15:32:55,130 - WaypointPlanningTool - INFO - Planning waypoint mission with 4 waypoints
+2026-04-15 15:32:55,131 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-04-15 15:35:22,403 - __main__ - INFO - Registering MCP tools
+2026-04-15 15:35:22,403 - __main__ - INFO - Registered 10 tools
+2026-04-15 15:35:22,403 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-15 15:35:22,403 - __main__ - INFO - Server version: 0.1.0
+2026-04-15 15:35:22,408 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-15 15:35:51,857 - __main__ - INFO - Registering MCP tools
+2026-04-15 15:35:51,858 - __main__ - INFO - Registered 10 tools
+2026-04-15 15:35:51,858 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-15 15:35:51,858 - __main__ - INFO - Server version: 0.1.0
+2026-04-15 15:35:51,864 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-04-15 15:35:51,865 - __main__ - INFO - Handling call_tool request: generate_kmz
+2026-04-15 15:35:51,866 - KMZGenerationTool - INFO - Generating KMZ file: test_mission.kmz
+2026-04-15 15:35:51,871 - KMZGenerationTool - INFO - KMZ file generated: output/test_mission.kmz
+2026-04-15 15:35:51,872 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-04-15 15:47:52,549 - __main__ - INFO - Registering MCP tools
+2026-04-15 15:47:52,549 - __main__ - INFO - Registering MCP tools
+2026-04-15 15:47:52,549 - __main__ - INFO - Registered 10 tools
+2026-04-15 15:47:52,549 - __main__ - INFO - Registered 10 tools
+2026-04-15 15:47:52,549 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-15 15:47:52,549 - __main__ - INFO - Starting DJI Waypoint MCP Server
+2026-04-15 15:47:52,549 - __main__ - INFO - Server version: 0.1.0
+2026-04-15 15:47:52,549 - __main__ - INFO - Server version: 0.1.0

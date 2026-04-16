@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "args": [
+        "-y",
+        "@playwright/mcp"
+      ],
+      "command": "npx"
+    },
+    "dji-waypoint-mcp": {
+      "args": [
+        "-m",
+        "src.dji_waypoint_mcp.server"
+      ],
+      "command": "/Users/Zhuanz/anaconda3/envs/agent/bin/python",
+      "cwd": "/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main",
+      "env": {
+        "PYTHONPATH": "/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main"
+      }
+    },
+    "amap-maps": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@amap/amap-maps-mcp-server"
+      ],
+      "env": {
+        "AMAP_MAPS_API_KEY": "7ba4a9586898d4da5eabfb53e5e62ef1"
+      }
+    }
+  }
+}

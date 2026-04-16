@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大疆航线规划MCP服务 - 专业无人机航线规划解决方案</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/glassmorphism.css">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="专业的Model Context Protocol服务，专注于大疆无人机航线规划和KMZ文件生成，支持多种飞行模式和智能路径优化。">
+    
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="assets/images/logo.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="assets/images/drone-planning.svg" as="image" type="image/svg+xml">
+    
+    <!-- 减少动画偏好支持 -->
+    <style>
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.svg" alt="大疆航线规划MCP服务" onerror="this.onerror=null; this.src='assets/images/placeholders/logo-placeholder.svg';" loading="eager">
+                <span>大疆航线规划MCP</span>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#home" role="menuitem">首页</a></li>
+                <li role="none"><a href="#features" role="menuitem">功能特性</a></li>
+                <li role="none"><a href="#tools" role="menuitem">工具文档</a></li>
+                <li role="none"><a href="#deployment" role="menuitem">部署指南</a></li>
+                <li role="none"><a href="#examples" role="menuitem">使用示例</a></li>
+                <li role="none"><a href="#api" role="menuitem">API参考</a></li>
+                <li role="none"><a href="https://github.com/your-org/dji-waypoint-mcp" target="_blank" rel="noopener noreferrer" role="menuitem">GitHub</a></li>
+            </ul>
+            <button class="hamburger" aria-label="切换导航菜单" aria-expanded="false" aria-controls="nav-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主页面 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>大疆航线规划MCP服务</h1>
+                    <p class="hero-subtitle">专业的Model Context Protocol服务，专注于大疆无人机航线规划和KMZ文件生成</p>
+                    <div class="hero-badges">
+                        <span class="badge badge-success">测试覆盖率 100%</span>
+                        <span class="badge badge-info">Python 3.8+</span>
+                        <span class="badge badge-warning">MCP兼容</span>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#deployment" class="btn btn-primary">快速开始</a>
+                        <a href="#tools" class="btn btn-secondary">查看文档</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/drone-planning.svg" alt="无人机航线规划示意图" onerror="this.onerror=null; this.src='assets/images/placeholders/hero-placeholder.svg';">
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能特性 -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2>功能特性</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🛩️</div>
+                        <h3>多种飞行模式</h3>
+                        <p>支持航点飞行、建图航拍、倾斜摄影、航带巡检等多种专业飞行模式</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>智能航线规划</h3>
+                        <p>自动生成最优航线路径，支持复杂测区和多种约束条件</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📁</div>
+                        <h3>WPML标准</h3>
+                        <p>生成符合大疆WPML标准的KMZ文件，直接导入DJI Pilot 2使用</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>路径优化</h3>
+                        <p>内置多种优化算法，最小化飞行距离和时间</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>坐标转换</h3>
+                        <p>支持多种坐标系统转换（WGS84、GCJ02、BD09等）</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✅</div>
+                        <h3>兼容性检查</h3>
+                        <p>自动验证设备兼容性和参数安全性</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚁</div>
+                        <h3>多机型支持</h3>
+                        <p>支持M300/M350/M30/M3系列等多种大疆无人机</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>高性能</h3>
+                        <p>优化的算法和缓存机制，确保快速响应</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工具概览 -->
+        <section id="tools" class="tools-overview">
+            <div class="container">
+                <h2>MCP工具概览</h2>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="waypoint">
+                        <h3>plan_waypoint_mission</h3>
+                        <p>航点飞行任务规划</p>
+                        <span class="tool-category">精确定位作业</span>
+                    </div>
+                    <div class="tool-card" data-tool="mapping">
+                        <h3>plan_mapping_mission</h3>
+                        <p>建图航拍任务规划</p>
+                        <span class="tool-category">地形测绘</span>
+                    </div>
+                    <div class="tool-card" data-tool="oblique">
+                        <h3>plan_oblique_mission</h3>
+                        <p>倾斜摄影任务规划</p>
+                        <span class="tool-category">三维建模</span>
+                    </div>
+                    <div class="tool-card" data-tool="strip">
+                        <h3>plan_strip_mission</h3>
+                        <p>航带飞行任务规划</p>
+                        <span class="tool-category">线性巡检</span>
+                    </div>
+                    <div class="tool-card" data-tool="optimize">
+                        <h3>optimize_route</h3>
+                        <p>航线路径优化</p>
+                        <span class="tool-category">效率提升</span>
+                    </div>
+                    <div class="tool-card" data-tool="coordinate">
+                        <h3>coordinate_multi_flights</h3>
+                        <p>多航线协调</p>
+                        <span class="tool-category">复杂任务</span>
+                    </div>
+                    <div class="tool-card" data-tool="device">
+                        <h3>query_device_info</h3>
+                        <p>设备信息查询</p>
+                        <span class="tool-category">兼容性检查</span>
+                    </div>
+                    <div class="tool-card" data-tool="validate">
+                        <h3>validate_mission_compatibility</h3>
+                        <p>任务兼容性验证</p>
+                        <span class="tool-category">安全检查</span>
+                    </div>
+                    <div class="tool-card" data-tool="utility">
+                        <h3>utility_functions</h3>
+                        <p>辅助功能工具</p>
+                        <span class="tool-category">坐标转换</span>
+                    </div>
+                    <div class="tool-card" data-tool="kmz">
+                        <h3>generate_kmz</h3>
+                        <p>KMZ文件生成</p>
+                        <span class="tool-category">文件导出</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 快速开始 -->
+        <section id="deployment" class="quick-start">
+            <div class="container">
+                <h2>快速开始</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>环境准备</h3>
+                            <div class="code-block">
+                                <pre><code># 确保Python 3.8+环境
+python --version
+
+# 克隆项目
+git clone &lt;repository-url&gt;
+cd dji-waypoint-mcp</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>安装依赖</h3>
+                            <div class="code-block">
+                                <pre><code># 安装依赖
+pip install -r requirements.txt
+
+# 安装开发依赖（可选）
+pip install -r requirements-dev.txt</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>配置MCP</h3>
+                            <div class="code-block">
+                                <pre><code># 在.kiro/settings/mcp.json中添加配置
+{
+  "mcpServers": {
+    "dji-waypoint-mcp": {
+      "command": "python",
+      "args": ["run_server.py"],
+      "env": {
+        "PYTHONPATH": ".",
+        "LOG_LEVEL": "INFO"
+      },
+      "disabled": false
+    }
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>启动服务</h3>
+                            <div class="code-block">
+                                <pre><code># 启动MCP服务
+python run_server.py
+
+# 或者直接运行模块
+python -m src.dji_waypoint_mcp.server</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 使用示例 -->
+        <section id="examples" class="examples">
+            <div class="container">
+                <h2>使用示例</h2>
+                <div class="example-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="waypoint">航点飞行</button>
+                        <button class="tab-button" data-tab="mapping">建图航拍</button>
+                        <button class="tab-button" data-tab="oblique">倾斜摄影</button>
+                        <button class="tab-button" data-tab="optimization">路径优化</button>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="waypoint-panel">
+                            <h3>航点飞行任务规划</h3>
+                            <div class="code-block">
+                                <pre><code>{
+  "waypoints": [
+    {
+      "latitude": 39.9042,
+      "longitude": 116.4074,
+      "altitude": 100.0,
+      "actions": [{"type": "take_photo"}]
+    },
+    {
+      "latitude": 39.9142,
+      "longitude": 116.4174,
+      "altitude": 100.0,
+      "actions": [{"type": "take_photo"}]
+    }
+  ],
+  "aircraft_type": "M30",
+  "flight_params": {
+    "speed": 5.0,
+    "altitude": 100.0
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                        <div class="tab-panel" id="mapping-panel">
+                            <h3>建图航拍任务规划</h3>
+                            <div class="code-block">
+                                <pre><code>{
+  "survey_area": {
+    "type": "rectangle",
+    "coordinates": [
+      [116.4074, 39.9042],
+      [116.4174, 39.9142]
+    ]
+  },
+  "mapping_params": {
+    "altitude": 120.0,
+    "overlap_rate": {
+      "front": 0.8,
+      "side": 0.7
+    },
+    "direction": 0
+  },
+  "aircraft_type": "M30"
+}</code></pre>
+                            </div>
+                        </div>
+                        <div class="tab-panel" id="oblique-panel">
+                            <h3>倾斜摄影任务规划</h3>
+                            <div class="code-block">
+                                <pre><code>{
+  "survey_area": {
+    "type": "polygon",
+    "coordinates": [
+      [116.4074, 39.9042],
+      [116.4174, 39.9042],
+      [116.4174, 39.9142],
+      [116.4074, 39.9142],
+      [116.4074, 39.9042]
+    ]
+  },
+  "oblique_params": {
+    "altitude": 150.0,
+    "overlap_rate": {
+      "front": 0.8,
+      "side": 0.7
+    },
+    "oblique_angle": -45.0,
+    "nadir_flight": true
+  },
+  "aircraft_type": "M300_RTK"
+}</code></pre>
+                            </div>
+                        </div>
+                        <div class="tab-panel" id="optimization-panel">
+                            <h3>航线路径优化</h3>
+                            <div class="code-block">
+                                <pre><code>{
+  "waypoints": [
+    {
+      "coordinates": {
+        "latitude": 39.9042,
+        "longitude": 116.4074,
+        "altitude": 100.0
+      },
+      "priority": 5,
+      "visit_time": 10.0
+    }
+  ],
+  "optimization_method": "two_opt",
+  "optimization_objective": "minimize_distance",
+  "flight_speed": 5.0,
+  "start_point_fixed": true
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 性能指标 -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">测试覆盖率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">专业工具</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">9</div>
+                        <div class="stat-label">支持机型</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">坐标系统</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>大疆航线规划MCP</h3>
+                    <p>专业的无人机航线规划解决方案</p>
+                    <div class="social-links">
+                        <a href="https://github.com/your-org/dji-waypoint-mcp" target="_blank">GitHub</a>
+                        <a href="#" target="_blank">文档</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#features">功能特性</a></li>
+                        <li><a href="#tools">工具文档</a></li>
+                        <li><a href="#deployment">部署指南</a></li>
+                        <li><a href="#examples">使用示例</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="tools.html">工具详细文档</a></li>
+                        <li><a href="deployment.html">部署指南</a></li>
+                        <li><a href="api.html">API参考</a></li>
+                        <li><a href="examples.html">更多示例</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="https://github.com/your-org/dji-waypoint-mcp/issues" target="_blank">问题反馈</a></li>
+                        <li><a href="https://github.com/your-org/dji-waypoint-mcp/discussions" target="_blank">讨论区</a></li>
+                        <li><a href="#" target="_blank">更新日志</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 大疆航线规划MCP服务. 采用 MIT 许可证.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

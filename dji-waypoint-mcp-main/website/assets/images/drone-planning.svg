@@ -1,0 +1,137 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#dbeafe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#bfdbfe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="droneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#2563eb;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:0.8" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 背景天空 -->
+  <rect width="400" height="200" fill="url(#skyGradient)"/>
+  
+  <!-- 地面 -->
+  <rect y="200" width="400" height="100" fill="#f1f5f9"/>
+  
+  <!-- 云朵 -->
+  <g opacity="0.6">
+    <ellipse cx="80" cy="60" rx="25" ry="15" fill="white"/>
+    <ellipse cx="95" cy="55" rx="20" ry="12" fill="white"/>
+    <ellipse cx="110" cy="60" rx="18" ry="10" fill="white"/>
+    
+    <ellipse cx="280" cy="80" rx="30" ry="18" fill="white"/>
+    <ellipse cx="300" cy="75" rx="25" ry="15" fill="white"/>
+    <ellipse cx="320" cy="80" rx="20" ry="12" fill="white"/>
+  </g>
+  
+  <!-- 地面网格 -->
+  <g stroke="#e2e8f0" stroke-width="1" opacity="0.5">
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect y="200" width="400" height="100" fill="url(#grid)"/>
+  </g>
+  
+  <!-- 主要航线路径 -->
+  <path d="M50 150 Q100 120 150 140 T250 130 Q300 110 350 120" 
+        fill="none" 
+        stroke="url(#pathGradient)" 
+        stroke-width="3" 
+        stroke-linecap="round"
+        filter="url(#glow)"/>
+  
+  <!-- 辅助航线 -->
+  <path d="M80 180 Q130 160 180 170 Q230 175 280 165" 
+        fill="none" 
+        stroke="url(#pathGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round"
+        opacity="0.6"/>
+  
+  <!-- 航点标记 -->
+  <g>
+    <!-- 起始点 -->
+    <circle cx="50" cy="150" r="6" fill="url(#droneGradient)" filter="url(#glow)"/>
+    <circle cx="50" cy="150" r="3" fill="white"/>
+    <text x="50" y="140" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#1e293b">START</text>
+    
+    <!-- 中间航点 -->
+    <circle cx="150" cy="140" r="4" fill="url(#droneGradient)"/>
+    <circle cx="150" cy="140" r="2" fill="white"/>
+    
+    <circle cx="250" cy="130" r="4" fill="url(#droneGradient)"/>
+    <circle cx="250" cy="130" r="2" fill="white"/>
+    
+    <!-- 终点 -->
+    <circle cx="350" cy="120" r="6" fill="#ef4444" filter="url(#glow)"/>
+    <circle cx="350" cy="120" r="3" fill="white"/>
+    <text x="350" y="110" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#1e293b">END</text>
+  </g>
+  
+  <!-- 无人机 -->
+  <g transform="translate(200, 125)">
+    <!-- 无人机阴影 -->
+    <ellipse cx="2" cy="7" rx="12" ry="6" fill="rgba(0,0,0,0.2)"/>
+    
+    <!-- 无人机主体 -->
+    <rect x="-4" y="-4" width="8" height="8" rx="2" fill="url(#droneGradient)"/>
+    
+    <!-- 螺旋桨臂 -->
+    <line x1="0" y1="0" x2="-8" y2="-8" stroke="url(#droneGradient)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="8" y2="-8" stroke="url(#droneGradient)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-8" y2="8" stroke="url(#droneGradient)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="8" y2="8" stroke="url(#droneGradient)" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- 螺旋桨 -->
+    <g opacity="0.7">
+      <circle cx="-8" cy="-8" r="3" fill="none" stroke="url(#droneGradient)" stroke-width="1.5"/>
+      <circle cx="8" cy="-8" r="3" fill="none" stroke="url(#droneGradient)" stroke-width="1.5"/>
+      <circle cx="-8" cy="8" r="3" fill="none" stroke="url(#droneGradient)" stroke-width="1.5"/>
+      <circle cx="8" cy="8" r="3" fill="none" stroke="url(#droneGradient)" stroke-width="1.5"/>
+    </g>
+    
+    <!-- 摄像头 -->
+    <circle cx="0" cy="2" r="2" fill="#64748b"/>
+    <circle cx="0" cy="2" r="1" fill="#1e293b"/>
+  </g>
+  
+  <!-- 飞行高度指示 -->
+  <g transform="translate(320, 160)">
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#64748b" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="5" y="20" font-family="system-ui" font-size="10" fill="#64748b">120m</text>
+  </g>
+  
+  <!-- 距离标记 -->
+  <g transform="translate(50, 280)">
+    <line x1="0" y1="0" x2="300" y2="0" stroke="#94a3b8" stroke-width="1"/>
+    <line x1="0" y1="-3" x2="0" y2="3" stroke="#94a3b8" stroke-width="1"/>
+    <line x1="300" y1="-3" x2="300" y2="3" stroke="#94a3b8" stroke-width="1"/>
+    <text x="150" y="15" text-anchor="middle" font-family="system-ui" font-size="10" fill="#64748b">1.2 km</text>
+  </g>
+  
+  <!-- 信息面板 -->
+  <g transform="translate(20, 20)">
+    <rect width="120" height="60" rx="8" fill="rgba(255,255,255,0.9)" stroke="rgba(37,99,235,0.2)" stroke-width="1"/>
+    <text x="10" y="15" font-family="system-ui" font-size="10" font-weight="600" fill="#1e293b">任务状态</text>
+    <text x="10" y="28" font-family="system-ui" font-size="9" fill="#64748b">• 航点: 4个</text>
+    <text x="10" y="40" font-family="system-ui" font-size="9" fill="#64748b">• 距离: 1.2km</text>
+    <text x="10" y="52" font-family="system-ui" font-size="9" fill="#10b981">• 状态: 执行中</text>
+  </g>
+</svg>

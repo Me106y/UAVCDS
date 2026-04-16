@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP工具详细文档 - 大疆航线规划MCP服务</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/favicon.ico">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="DJI Waypoint MCP">
+                <span>大疆航线规划MCP</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="tools.html" class="active">工具文档</a></li>
+                <li><a href="deployment.html">部署指南</a></li>
+                <li><a href="examples.html">使用示例</a></li>
+                <li><a href="api.html">API参考</a></li>
+                <li><a href="https://github.com/your-org/dji-waypoint-mcp" target="_blank">GitHub</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="documentation">
+        <div class="container">
+            <div class="doc-layout">
+                <!-- 侧边栏导航 -->
+                <aside class="doc-sidebar">
+                    <div class="sidebar-content">
+                        <h3>工具列表</h3>
+                        <ul class="tool-nav">
+                            <li><a href="#waypoint-mission">航点飞行规划</a></li>
+                            <li><a href="#mapping-mission">建图航拍规划</a></li>
+                            <li><a href="#oblique-mission">倾斜摄影规划</a></li>
+                            <li><a href="#strip-mission">航带飞行规划</a></li>
+                            <li><a href="#route-optimizer">路径优化</a></li>
+                            <li><a href="#multi-flight">多航线协调</a></li>
+                            <li><a href="#device-query">设备信息查询</a></li>
+                            <li><a href="#validation">兼容性验证</a></li>
+                            <li><a href="#utility">辅助功能</a></li>
+                            <li><a href="#kmz-generation">KMZ文件生成</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- 主要内容 -->
+                <div class="doc-content">
+                    <header class="doc-header">
+                        <h1>MCP工具详细文档</h1>
+                        <p>大疆航线规划MCP服务提供了10个专业的航线规划工具，每个工具都针对特定的飞行场景进行了优化。</p>
+                    </header>
+
+                    <!-- 工具概览表格 -->
+                    <section class="tools-table">
+                        <h2>工具概览</h2>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>工具名称</th>
+                                        <th>功能描述</th>
+                                        <th>适用场景</th>
+                                        <th>支持机型</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>plan_waypoint_mission</code></td>
+                                        <td>航点飞行任务规划</td>
+                                        <td>自定义航点飞行、精确定位作业</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>plan_mapping_mission</code></td>
+                                        <td>建图航拍任务规划</td>
+                                        <td>地形测绘、正射影像采集</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>plan_oblique_mission</code></td>
+                                        <td>倾斜摄影任务规划</td>
+                                        <td>三维建模、倾斜摄影测量</td>
+                                        <td>M300/M350系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>plan_strip_mission</code></td>
+                                        <td>航带飞行任务规划</td>
+                                        <td>线性巡检、管道巡查</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>optimize_route</code></td>
+                                        <td>航线路径优化</td>
+                                        <td>路径优化、飞行效率提升</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>coordinate_multi_flights</code></td>
+                                        <td>多航线协调</td>
+                                        <td>复杂任务、多机协同</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>query_device_info</code></td>
+                                        <td>设备信息查询</td>
+                                        <td>设备兼容性检查</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>validate_mission_compatibility</code></td>
+                                        <td>任务兼容性验证</td>
+                                        <td>安全检查、参数验证</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>utility_functions</code></td>
+                                        <td>辅助功能工具</td>
+                                        <td>坐标转换、距离计算</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>generate_kmz</code></td>
+                                        <td>KMZ文件生成</td>
+                                        <td>航线文件导出</td>
+                                        <td>全系列</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- 详细工具文档 -->
+                    <section id="waypoint-mission" class="tool-section">
+                        <h2>1. 航点飞行任务规划 (plan_waypoint_mission)</h2>
+                        <div class="tool-description">
+                            <p>规划自定义航点飞行任务，支持精确的航点定位和动作配置。适用于需要精确控制飞行路径和拍摄点的场景。</p>
+                        </div>
+
+                        <h3>输入参数</h3>
+                        <div class="parameter-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>参数</th>
+                                        <th>类型</th>
+                                        <th>必填</th>
+                                        <th>说明</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>waypoints</code></td>
+                                        <td>Array</td>
+                                        <td>✅</td>
+                                        <td>航点列表，至少2个航点</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>aircraft_type</code></td>
+                                        <td>String</td>
+                                        <td>✅</td>
+                                        <td>无人机型号 (M30, M300_RTK等)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>flight_params</code></td>
+                                        <td>Object</td>
+                                        <td>✅</td>
+                                        <td>飞行参数配置</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>航点参数结构</h3>
+                        <div class="code-block">
+                            <pre><code>{
+  "latitude": 39.9042,        // 纬度 (-90 到 90)
+  "longitude": 116.4074,      // 经度 (-180 到 180)
+  "altitude": 100.0,          // 高度 (米)
+  "actions": [                // 航点动作列表
+    {
+      "type": "take_photo",   // 动作类型
+      "parameters": {         // 动作参数
+        "suffix": "wp_001"
+      }
+    }
+  ]
+}</code></pre>
+                        </div>
+
+                        <h3>支持的航点动作</h3>
+                        <ul class="action-list">
+                            <li><strong>take_photo</strong> - 拍照</li>
+                            <li><strong>start_record</strong> - 开始录像</li>
+                            <li><strong>stop_record</strong> - 停止录像</li>
+                            <li><strong>gimbal_pitch</strong> - 云台俯仰角调整</li>
+                            <li><strong>hover</strong> - 悬停等待</li>
+                            <li><strong>rotate_aircraft</strong> - 飞机旋转</li>
+                        </ul>
+
+                        <h3>使用示例</h3>
+                        <div class="code-block">
+                            <pre><code>{
+  "waypoints": [
+    {
+      "latitude": 39.9042,
+      "longitude": 116.4074,
+      "altitude": 100.0,
+      "actions": [
+        {
+          "type": "take_photo",
+          "parameters": {"suffix": "point_01"}
+        }
+      ]
+    },
+    {
+      "latitude": 39.9142,
+      "longitude": 116.4174,
+      "altitude": 100.0,
+      "actions": [
+        {
+          "type": "gimbal_pitch",
+          "parameters": {"angle": -45}
+        },
+        {
+          "type": "take_photo",
+          "parameters": {"suffix": "point_02"}
+        }
+      ]
+    }
+  ],
+  "aircraft_type": "M30",
+  "flight_params": {
+    "speed": 5.0,
+    "altitude": 100.0,
+    "heading_mode": "follow_wayline",
+    "turn_mode": "to_point_stop"
+  }
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="mapping-mission" class="tool-section">
+                        <h2>2. 建图航拍任务规划 (plan_mapping_mission)</h2>
+                        <div class="tool-description">
+                            <p>自动生成建图航拍任务，支持矩形和多边形测区的平行航线规划。适用于地形测绘、正射影像采集等场景。</p>
+                        </div>
+
+                        <h3>测区类型</h3>
+                        <div class="area-types">
+                            <div class="area-type">
+                                <h4>矩形测区</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "type": "rectangle",
+  "coordinates": [
+    [116.4074, 39.9042],  // 左下角
+    [116.4174, 39.9142]   // 右上角
+  ]
+}</code></pre>
+                                </div>
+                            </div>
+                            <div class="area-type">
+                                <h4>多边形测区</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "type": "polygon",
+  "coordinates": [
+    [116.4074, 39.9042],
+    [116.4174, 39.9042],
+    [116.4174, 39.9142],
+    [116.4074, 39.9142],
+    [116.4074, 39.9042]  // 闭合多边形
+  ]
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>重叠率配置建议</h3>
+                        <div class="overlap-guide">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>应用场景</th>
+                                        <th>航向重叠率</th>
+                                        <th>旁向重叠率</th>
+                                        <th>说明</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>一般测绘</td>
+                                        <td>70-80%</td>
+                                        <td>60-70%</td>
+                                        <td>平衡质量和效率</td>
+                                    </tr>
+                                    <tr>
+                                        <td>高精度测绘</td>
+                                        <td>80-85%</td>
+                                        <td>70-75%</td>
+                                        <td>更好的拼接效果</td>
+                                    </tr>
+                                    <tr>
+                                        <td>快速巡查</td>
+                                        <td>60-70%</td>
+                                        <td>50-60%</td>
+                                        <td>提高飞行效率</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="oblique-mission" class="tool-section">
+                        <h2>3. 倾斜摄影任务规划 (plan_oblique_mission)</h2>
+                        <div class="tool-description">
+                            <p>生成倾斜摄影任务，自动规划五个方向的航线（正射+四个倾斜方向）。适用于三维建模、倾斜摄影测量等场景。</p>
+                        </div>
+
+                        <h3>倾斜角度配置</h3>
+                        <div class="oblique-config">
+                            <div class="angle-guide">
+                                <h4>推荐倾斜角度</h4>
+                                <ul>
+                                    <li><strong>-30°</strong> - 适用于低层建筑</li>
+                                    <li><strong>-45°</strong> - 通用角度，适用于大多数场景</li>
+                                    <li><strong>-60°</strong> - 适用于高层建筑</li>
+                                </ul>
+                            </div>
+                            <div class="direction-guide">
+                                <h4>倾斜方向</h4>
+                                <ul>
+                                    <li><strong>0°</strong> - 北向倾斜</li>
+                                    <li><strong>90°</strong> - 东向倾斜</li>
+                                    <li><strong>180°</strong> - 南向倾斜</li>
+                                    <li><strong>270°</strong> - 西向倾斜</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>完整配置示例</h3>
+                        <div class="code-block">
+                            <pre><code>{
+  "survey_area": {
+    "type": "polygon",
+    "coordinates": [
+      [116.4074, 39.9042],
+      [116.4174, 39.9042],
+      [116.4174, 39.9142],
+      [116.4074, 39.9142],
+      [116.4074, 39.9042]
+    ]
+  },
+  "oblique_params": {
+    "altitude": 150.0,
+    "overlap_rate": {
+      "front": 0.8,
+      "side": 0.7
+    },
+    "oblique_angle": -45.0,
+    "directions": [0, 90, 180, 270],
+    "nadir_flight": true,  // 是否包含正射航线
+    "flight_speed": 6.0
+  },
+  "aircraft_type": "M300_RTK"
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="strip-mission" class="tool-section">
+                        <h2>4. 航带飞行任务规划 (plan_strip_mission)</h2>
+                        <div class="tool-description">
+                            <p>规划线性航带飞行任务，适用于走廊巡检、管道巡查、道路巡查等线性目标的检查场景。</p>
+                        </div>
+
+                        <h3>航带类型</h3>
+                        <div class="strip-types">
+                            <div class="strip-type">
+                                <h4>管道巡查 (pipeline)</h4>
+                                <p>专门用于石油、天然气管道的巡检，支持管道走向跟踪</p>
+                            </div>
+                            <div class="strip-type">
+                                <h4>电力线巡检 (powerline)</h4>
+                                <p>电力线路巡检，支持杆塔定位和线路跟踪</p>
+                            </div>
+                            <div class="strip-type">
+                                <h4>道路巡查 (road)</h4>
+                                <p>道路状况检查，支持道路中心线跟踪</p>
+                            </div>
+                            <div class="strip-type">
+                                <h4>河流巡查 (river)</h4>
+                                <p>河流水质监测和河道变化检查</p>
+                            </div>
+                        </div>
+
+                        <h3>飞行模式</h3>
+                        <div class="flight-patterns">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>模式</th>
+                                        <th>描述</th>
+                                        <th>适用场景</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>single_line</code></td>
+                                        <td>单线飞行</td>
+                                        <td>窄带目标，如管道</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>parallel_lines</code></td>
+                                        <td>平行线飞行</td>
+                                        <td>宽带目标，如高速公路</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>zigzag</code></td>
+                                        <td>之字形飞行</td>
+                                        <td>需要详细检查的区域</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>back_and_forth</code></td>
+                                        <td>往返飞行</td>
+                                        <td>需要多角度观察的目标</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="route-optimizer" class="tool-section">
+                        <h2>5. 航线路径优化 (optimize_route)</h2>
+                        <div class="tool-description">
+                            <p>优化航点顺序以最小化飞行距离、时间或能耗。支持多种优化算法和目标函数。</p>
+                        </div>
+
+                        <h3>优化算法对比</h3>
+                        <div class="algorithm-comparison">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>算法</th>
+                                        <th>时间复杂度</th>
+                                        <th>优化质量</th>
+                                        <th>适用场景</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>nearest_neighbor</code></td>
+                                        <td>O(n²)</td>
+                                        <td>中等</td>
+                                        <td>快速优化，航点数量较少</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>two_opt</code></td>
+                                        <td>O(n²)</td>
+                                        <td>良好</td>
+                                        <td>平衡速度和质量</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>genetic_algorithm</code></td>
+                                        <td>O(g×p×n)</td>
+                                        <td>优秀</td>
+                                        <td>复杂约束，高质量要求</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>simulated_annealing</code></td>
+                                        <td>O(i×n)</td>
+                                        <td>优秀</td>
+                                        <td>大规模问题</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>christofides</code></td>
+                                        <td>O(n³)</td>
+                                        <td>最优</td>
+                                        <td>小规模高精度要求</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>优化目标</h3>
+                        <div class="optimization-objectives">
+                            <div class="objective">
+                                <h4>minimize_distance</h4>
+                                <p>最小化总飞行距离，适用于节省时间的场景</p>
+                            </div>
+                            <div class="objective">
+                                <h4>minimize_time</h4>
+                                <p>最小化总飞行时间，考虑加速减速过程</p>
+                            </div>
+                            <div class="objective">
+                                <h4>minimize_energy</h4>
+                                <p>最小化能耗，延长飞行时间</p>
+                            </div>
+                            <div class="objective">
+                                <h4>balanced</h4>
+                                <p>平衡优化，综合考虑距离、时间和能耗</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 其他工具文档继续... -->
+                    <section id="utility" class="tool-section">
+                        <h2>9. 辅助功能工具 (utility_functions)</h2>
+                        <div class="tool-description">
+                            <p>提供坐标转换、距离计算、航线分析等辅助功能，支持多种坐标系统和计算方法。</p>
+                        </div>
+
+                        <h3>坐标系统支持</h3>
+                        <div class="coordinate-systems">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>坐标系统</th>
+                                        <th>代码</th>
+                                        <th>适用地区</th>
+                                        <th>说明</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>WGS84</td>
+                                        <td><code>WGS84</code></td>
+                                        <td>全球</td>
+                                        <td>GPS原始坐标系</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GCJ02</td>
+                                        <td><code>GCJ02</code></td>
+                                        <td>中国大陆</td>
+                                        <td>国测局坐标系</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BD09</td>
+                                        <td><code>BD09</code></td>
+                                        <td>中国大陆</td>
+                                        <td>百度坐标系</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UTM</td>
+                                        <td><code>UTM</code></td>
+                                        <td>全球分带</td>
+                                        <td>通用横轴墨卡托投影</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>功能列表</h3>
+                        <div class="utility-functions">
+                            <div class="function-group">
+                                <h4>坐标转换</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "function_type": "convert_coordinates",
+  "coordinates": [
+    {"latitude": 39.9042, "longitude": 116.4074}
+  ],
+  "source_system": "WGS84",
+  "target_system": "GCJ02"
+}</code></pre>
+                                </div>
+                            </div>
+                            <div class="function-group">
+                                <h4>距离计算</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "function_type": "calculate_distance",
+  "points": [
+    {"latitude": 39.9042, "longitude": 116.4074},
+    {"latitude": 39.9142, "longitude": 116.4174}
+  ],
+  "unit": "meters",
+  "calculation_method": "haversine"
+}</code></pre>
+                                </div>
+                            </div>
+                            <div class="function-group">
+                                <h4>航线分析</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "function_type": "analyze_flight_plan",
+  "waypoints": [...],
+  "flight_speed": 5.0,
+  "include_detailed_stats": true,
+  "analyze_efficiency": true
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="kmz-generation" class="tool-section">
+                        <h2>10. KMZ文件生成 (generate_kmz)</h2>
+                        <div class="tool-description">
+                            <p>生成符合WPML标准的KMZ航线文件，可直接导入DJI Pilot 2使用。支持完整的航线信息和元数据。</p>
+                        </div>
+
+                        <h3>WPML标准支持</h3>
+                        <div class="wpml-features">
+                            <ul>
+                                <li>✅ 航点信息 (坐标、高度、动作)</li>
+                                <li>✅ 飞行参数 (速度、转弯模式、航向模式)</li>
+                                <li>✅ 安全设置 (失控动作、低电量动作)</li>
+                                <li>✅ 负载配置 (云台设置、相机参数)</li>
+                                <li>✅ 元数据 (作者、创建时间、版本)</li>
+                                <li>✅ 模板文件 (template.kml)</li>
+                            </ul>
+                        </div>
+
+                        <h3>文件结构</h3>
+                        <div class="file-structure">
+                            <pre><code>mission.kmz
+├── waylines.wpml          # 主航线文件
+├── template.kml           # 模板文件
+└── res/                   # 资源文件夹
+    ├── icon.png          # 图标文件
+    └── ...               # 其他资源</code></pre>
+                        </div>
+
+                        <h3>生成配置</h3>
+                        <div class="code-block">
+                            <pre><code>{
+  "flight_plan": {
+    "waypoints": [...],
+    "flight_speed": 5.0,
+    "aircraft_type": "M30",
+    "flight_params": {
+      "heading_mode": "follow_wayline",
+      "turn_mode": "to_point_stop",
+      "gimbal_pitch": -90
+    }
+  },
+  "output_filename": "mission.kmz",
+  "include_template": true,
+  "include_resources": false,
+  "author": "DJI Waypoint Planner",
+  "metadata": {
+    "mission_name": "测绘任务_001",
+    "description": "建图航拍任务",
+    "created_date": "2024-07-20"
+  }
+}</code></pre>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>大疆航线规划MCP</h3>
+                    <p>专业的无人机航线规划解决方案</p>
+                </div>
+                <div class="footer-section">
+                    <h4>文档</h4>
+                    <ul>
+                        <li><a href="tools.html">工具文档</a></li>
+                        <li><a href="deployment.html">部署指南</a></li>
+                        <li><a href="api.html">API参考</a></li>
+                        <li><a href="examples.html">使用示例</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 大疆航线规划MCP服务. 采用 MIT 许可证.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

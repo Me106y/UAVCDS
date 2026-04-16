@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部署指南 - 大疆航线规划MCP服务</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="DJI Waypoint MCP">
+                <span>大疆航线规划MCP</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="tools.html">工具文档</a></li>
+                <li><a href="deployment.html" class="active">部署指南</a></li>
+                <li><a href="examples.html">使用示例</a></li>
+                <li><a href="api.html">API参考</a></li>
+                <li><a href="https://github.com/your-org/dji-waypoint-mcp" target="_blank">GitHub</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="documentation">
+        <div class="container">
+            <div class="doc-layout">
+                <!-- 侧边栏导航 -->
+                <aside class="doc-sidebar">
+                    <div class="sidebar-content">
+                        <h3>部署指南</h3>
+                        <ul class="deployment-nav">
+                            <li><a href="#requirements">环境要求</a></li>
+                            <li><a href="#installation">安装步骤</a></li>
+                            <li><a href="#configuration">配置说明</a></li>
+                            <li><a href="#mcp-setup">MCP客户端配置</a></li>
+                            <li><a href="#testing">测试验证</a></li>
+                            <li><a href="#docker">Docker部署</a></li>
+                            <li><a href="#production">生产环境</a></li>
+                            <li><a href="#troubleshooting">故障排除</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- 主要内容 -->
+                <div class="doc-content">
+                    <header class="doc-header">
+                        <h1>部署指南</h1>
+                        <p>详细的安装和配置指南，帮助您快速部署大疆航线规划MCP服务。</p>
+                    </header>
+
+                    <!-- 环境要求 -->
+                    <section id="requirements" class="deployment-section">
+                        <h2>环境要求</h2>
+                        
+                        <div class="requirements-grid">
+                            <div class="requirement-card">
+                                <h3>🐍 Python环境</h3>
+                                <ul>
+                                    <li>Python 3.8 或更高版本</li>
+                                    <li>pip 包管理器</li>
+                                    <li>虚拟环境 (推荐)</li>
+                                </ul>
+                            </div>
+                            <div class="requirement-card">
+                                <h3>💻 操作系统</h3>
+                                <ul>
+                                    <li>macOS 10.14+</li>
+                                    <li>Ubuntu 18.04+</li>
+                                    <li>Windows 10+</li>
+                                    <li>CentOS 7+</li>
+                                </ul>
+                            </div>
+                            <div class="requirement-card">
+                                <h3>📦 系统依赖</h3>
+                                <ul>
+                                    <li>GDAL/OGR (地理数据处理)</li>
+                                    <li>PROJ (坐标转换)</li>
+                                    <li>libxml2 (XML处理)</li>
+                                    <li>Git (版本控制)</li>
+                                </ul>
+                            </div>
+                            <div class="requirement-card">
+                                <h3>💾 硬件要求</h3>
+                                <ul>
+                                    <li>内存: 最少 2GB RAM</li>
+                                    <li>存储: 最少 1GB 可用空间</li>
+                                    <li>CPU: 双核处理器</li>
+                                    <li>网络: 稳定的网络连接</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="system-check">
+                            <h3>环境检查</h3>
+                            <div class="code-block">
+                                <pre><code># 检查Python版本
+python --version
+# 应该显示 Python 3.8.x 或更高
+
+# 检查pip版本
+pip --version
+
+# 检查Git
+git --version
+
+# 检查系统依赖 (Ubuntu/Debian)
+sudo apt-get update
+sudo apt-get install -y python3-dev libgdal-dev libproj-dev libxml2-dev
+
+# 检查系统依赖 (macOS)
+brew install gdal proj libxml2
+
+# 检查系统依赖 (CentOS/RHEL)
+sudo yum install -y python3-devel gdal-devel proj-devel libxml2-devel</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 安装步骤 -->
+                    <section id="installation" class="deployment-section">
+                        <h2>安装步骤</h2>
+
+                        <div class="installation-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>获取源代码</h3>
+                                    <div class="code-block">
+                                        <pre><code># 克隆项目仓库
+git clone https://github.com/your-org/dji-waypoint-mcp.git
+cd dji-waypoint-mcp
+
+# 查看项目结构
+ls -la</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>创建虚拟环境</h3>
+                                    <div class="code-block">
+                                        <pre><code># 创建虚拟环境
+python -m venv venv
+
+# 激活虚拟环境
+# Linux/macOS:
+source venv/bin/activate
+# Windows:
+venv\Scripts\activate
+
+# 验证虚拟环境
+which python</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>安装依赖包</h3>
+                                    <div class="code-block">
+                                        <pre><code># 升级pip
+pip install --upgrade pip
+
+# 安装核心依赖
+pip install -r requirements.txt
+
+# 安装开发依赖 (可选)
+pip install -r requirements-dev.txt
+
+# 验证安装
+pip list | grep -E "(mcp|pydantic|numpy|shapely)"</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3>配置环境变量</h3>
+                                    <div class="code-block">
+                                        <pre><code># 创建环境配置文件
+cp .env.example .env
+
+# 编辑配置文件
+nano .env
+
+# 设置Python路径
+export PYTHONPATH=$PYTHONPATH:$(pwd)/src
+
+# 设置日志级别
+export LOG_LEVEL=INFO
+
+# 设置输出目录
+export OUTPUT_DIR=./output</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h3>运行测试</h3>
+                                    <div class="code-block">
+                                        <pre><code># 运行完整测试套件
+python test_comprehensive.py
+
+# 查看测试报告
+cat test_report.md
+
+# 运行单元测试
+python -m pytest tests/unit/ -v
+
+# 检查代码覆盖率
+python -m pytest --cov=src/dji_waypoint_mcp tests/</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 配置说明 -->
+                    <section id="configuration" class="deployment-section">
+                        <h2>配置说明</h2>
+
+                        <div class="config-sections">
+                            <div class="config-section">
+                                <h3>服务器配置</h3>
+                                <p>在 <code>src/dji_waypoint_mcp/config.py</code> 中配置服务器参数：</p>
+                                <div class="code-block">
+                                    <pre><code># 服务器基本信息
+SERVER_NAME = "dji-waypoint-mcp"
+SERVER_VERSION = "1.0.0"
+
+# 文件路径配置
+OUTPUT_DIR = Path("./output")
+TEMP_DIR = Path("./temp")
+
+# 日志配置
+LOG_LEVEL = "INFO"
+LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# 性能配置
+ENABLE_CACHING = True
+CACHE_SIZE = 1000
+WORKER_THREADS = 4
+
+# 安全配置
+MAX_WAYPOINTS_PER_MISSION = 999
+MAX_CONCURRENT_MISSIONS = 10</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="config-section">
+                                <h3>环境变量配置</h3>
+                                <p>创建 <code>.env</code> 文件配置环境变量：</p>
+                                <div class="code-block">
+                                    <pre><code># 基本配置
+LOG_LEVEL=INFO
+OUTPUT_DIR=./output
+TEMP_DIR=./temp
+
+# 性能配置
+ENABLE_CACHING=true
+CACHE_SIZE=1000
+WORKER_THREADS=4
+
+# 开发配置
+DEBUG=false
+DEVELOPMENT_MODE=false
+
+# 安全配置
+MAX_WAYPOINTS_PER_MISSION=999
+MAX_CONCURRENT_MISSIONS=10</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="config-section">
+                                <h3>日志配置</h3>
+                                <p>配置日志输出格式和级别：</p>
+                                <div class="code-block">
+                                    <pre><code># logging.conf
+[loggers]
+keys=root,dji_waypoint_mcp
+
+[handlers]
+keys=consoleHandler,fileHandler
+
+[formatters]
+keys=simpleFormatter,detailedFormatter
+
+[logger_root]
+level=INFO
+handlers=consoleHandler
+
+[logger_dji_waypoint_mcp]
+level=DEBUG
+handlers=consoleHandler,fileHandler
+qualname=dji_waypoint_mcp
+propagate=0
+
+[handler_consoleHandler]
+class=StreamHandler
+level=INFO
+formatter=simpleFormatter
+args=(sys.stdout,)
+
+[handler_fileHandler]
+class=FileHandler
+level=DEBUG
+formatter=detailedFormatter
+args=('logs/dji_waypoint_mcp.log',)
+
+[formatter_simpleFormatter]
+format=%(levelname)s - %(message)s
+
+[formatter_detailedFormatter]
+format=%(asctime)s - %(name)s - %(levelname)s - %(message)s</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- MCP客户端配置 -->
+                    <section id="mcp-setup" class="deployment-section">
+                        <h2>MCP客户端配置</h2>
+
+                        <div class="mcp-clients">
+                            <div class="client-config">
+                                <h3>Kiro IDE 配置</h3>
+                                <p>在 <code>.kiro/settings/mcp.json</code> 中添加服务配置：</p>
+                                <div class="code-block">
+                                    <pre><code>{
+  "mcpServers": {
+    "dji-waypoint-mcp": {
+      "command": "python",
+      "args": ["run_server.py"],
+      "env": {
+        "PYTHONPATH": ".",
+        "LOG_LEVEL": "INFO"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "plan_waypoint_mission",
+        "plan_mapping_mission",
+        "plan_oblique_mission",
+        "plan_strip_mission",
+        "optimize_route",
+        "coordinate_multi_flights",
+        "query_device_info",
+        "validate_mission_compatibility",
+        "utility_functions",
+        "generate_kmz"
+      ]
+    }
+  }
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="client-config">
+                                <h3>Claude Desktop 配置</h3>
+                                <p>在 <code>~/.claude_desktop_config.json</code> 中添加：</p>
+                                <div class="code-block">
+                                    <pre><code>{
+  "mcpServers": {
+    "dji-waypoint-mcp": {
+      "command": "python",
+      "args": ["-m", "src.dji_waypoint_mcp.server"],
+      "cwd": "/path/to/dji-waypoint-mcp",
+      "env": {
+        "PYTHONPATH": "/path/to/dji-waypoint-mcp"
+      }
+    }
+  }
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="client-config">
+                                <h3>通用MCP客户端配置</h3>
+                                <p>标准MCP客户端配置格式：</p>
+                                <div class="code-block">
+                                    <pre><code>{
+  "name": "dji-waypoint-mcp",
+  "command": ["python", "run_server.py"],
+  "env": {
+    "PYTHONPATH": ".",
+    "LOG_LEVEL": "INFO"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 测试验证 -->
+                    <section id="testing" class="deployment-section">
+                        <h2>测试验证</h2>
+
+                        <div class="testing-steps">
+                            <div class="test-step">
+                                <h3>1. 服务启动测试</h3>
+                                <div class="code-block">
+                                    <pre><code># 启动MCP服务
+python run_server.py
+
+# 应该看到类似输出:
+# 🚀 启动大疆航线规划MCP服务...
+# 📡 服务将在stdio模式下运行，等待MCP客户端连接
+# 🔧 支持的工具:
+#    - plan_waypoint_mission: 航点飞行规划
+#    - plan_mapping_mission: 建图航拍规划
+#    ...
+# ============================================================</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="test-step">
+                                <h3>2. 工具功能测试</h3>
+                                <div class="code-block">
+                                    <pre><code># 运行MCP客户端测试
+python test_mcp_client.py
+
+# 测试特定工具
+python -c "
+import asyncio
+from test_mcp_client import test_waypoint_mission
+asyncio.run(test_waypoint_mission())
+"
+
+# 查看测试结果
+echo "测试完成，检查输出目录:"
+ls -la output/</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="test-step">
+                                <h3>3. 集成测试</h3>
+                                <div class="code-block">
+                                    <pre><code># 运行完整集成测试
+python test_comprehensive.py
+
+# 检查测试覆盖率
+python -m pytest --cov=src/dji_waypoint_mcp --cov-report=html tests/
+
+# 查看覆盖率报告
+open htmlcov/index.html</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="test-step">
+                                <h3>4. 性能测试</h3>
+                                <div class="code-block">
+                                    <pre><code># 运行性能测试
+python -c "
+import time
+import asyncio
+from src.dji_waypoint_mcp.server import DJIWaypointMCPServer
+
+async def performance_test():
+    server = DJIWaypointMCPServer()
+    start_time = time.time()
+    
+    # 测试工具列表获取
+    tools = server.tool_registry.get_all_tools()
+    print(f'工具数量: {len(tools)}')
+    
+    end_time = time.time()
+    print(f'启动时间: {end_time - start_time:.2f}秒')
+
+asyncio.run(performance_test())
+"</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Docker部署 -->
+                    <section id="docker" class="deployment-section">
+                        <h2>Docker部署</h2>
+
+                        <div class="docker-deployment">
+                            <div class="docker-step">
+                                <h3>1. 构建Docker镜像</h3>
+                                <div class="code-block">
+                                    <pre><code># 创建Dockerfile
+cat > Dockerfile << 'EOF'
+FROM python:3.9-slim
+
+# 安装系统依赖
+RUN apt-get update && apt-get install -y \
+    libgdal-dev \
+    libproj-dev \
+    libxml2-dev \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# 设置工作目录
+WORKDIR /app
+
+# 复制依赖文件
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 复制源代码
+COPY src/ ./src/
+COPY mcp/ ./mcp/
+COPY run_server.py .
+
+# 创建输出目录
+RUN mkdir -p output temp logs
+
+# 设置环境变量
+ENV PYTHONPATH=/app
+ENV LOG_LEVEL=INFO
+
+# 暴露端口 (如果需要)
+EXPOSE 8080
+
+# 启动命令
+CMD ["python", "run_server.py"]
+EOF
+
+# 构建镜像
+docker build -t dji-waypoint-mcp:latest .</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="docker-step">
+                                <h3>2. 运行Docker容器</h3>
+                                <div class="code-block">
+                                    <pre><code># 运行容器
+docker run -d \
+  --name dji-waypoint-mcp \
+  -v $(pwd)/output:/app/output \
+  -v $(pwd)/logs:/app/logs \
+  -e LOG_LEVEL=INFO \
+  dji-waypoint-mcp:latest
+
+# 查看容器状态
+docker ps
+
+# 查看容器日志
+docker logs dji-waypoint-mcp
+
+# 进入容器调试
+docker exec -it dji-waypoint-mcp bash</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="docker-step">
+                                <h3>3. Docker Compose部署</h3>
+                                <div class="code-block">
+                                    <pre><code># 创建docker-compose.yml
+cat > docker-compose.yml << 'EOF'
+version: '3.8'
+
+services:
+  dji-waypoint-mcp:
+    build: .
+    container_name: dji-waypoint-mcp
+    environment:
+      - LOG_LEVEL=INFO
+      - OUTPUT_DIR=/app/output
+      - TEMP_DIR=/app/temp
+    volumes:
+      - ./output:/app/output
+      - ./logs:/app/logs
+      - ./temp:/app/temp
+    restart: unless-stopped
+    networks:
+      - mcp-network
+
+networks:
+  mcp-network:
+    driver: bridge
+EOF
+
+# 启动服务
+docker-compose up -d
+
+# 查看服务状态
+docker-compose ps
+
+# 查看日志
+docker-compose logs -f</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 生产环境 -->
+                    <section id="production" class="deployment-section">
+                        <h2>生产环境部署</h2>
+
+                        <div class="production-deployment">
+                            <div class="prod-section">
+                                <h3>系统服务配置</h3>
+                                <p>创建systemd服务文件：</p>
+                                <div class="code-block">
+                                    <pre><code># 创建服务文件
+sudo tee /etc/systemd/system/dji-waypoint-mcp.service << 'EOF'
+[Unit]
+Description=DJI Waypoint MCP Service
+After=network.target
+
+[Service]
+Type=simple
+User=mcp
+Group=mcp
+WorkingDirectory=/opt/dji-waypoint-mcp
+Environment=PYTHONPATH=/opt/dji-waypoint-mcp
+Environment=LOG_LEVEL=INFO
+ExecStart=/opt/dji-waypoint-mcp/venv/bin/python run_server.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# 重新加载systemd
+sudo systemctl daemon-reload
+
+# 启用服务
+sudo systemctl enable dji-waypoint-mcp
+
+# 启动服务
+sudo systemctl start dji-waypoint-mcp
+
+# 查看服务状态
+sudo systemctl status dji-waypoint-mcp</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="prod-section">
+                                <h3>日志轮转配置</h3>
+                                <div class="code-block">
+                                    <pre><code># 创建logrotate配置
+sudo tee /etc/logrotate.d/dji-waypoint-mcp << 'EOF'
+/opt/dji-waypoint-mcp/logs/*.log {
+    daily
+    missingok
+    rotate 30
+    compress
+    delaycompress
+    notifempty
+    create 644 mcp mcp
+    postrotate
+        systemctl reload dji-waypoint-mcp
+    endscript
+}
+EOF</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="prod-section">
+                                <h3>监控配置</h3>
+                                <div class="code-block">
+                                    <pre><code># 创建健康检查脚本
+cat > /opt/dji-waypoint-mcp/health_check.sh << 'EOF'
+#!/bin/bash
+
+# 检查服务状态
+if ! systemctl is-active --quiet dji-waypoint-mcp; then
+    echo "Service is not running"
+    exit 1
+fi
+
+# 检查进程
+if ! pgrep -f "run_server.py" > /dev/null; then
+    echo "Process not found"
+    exit 1
+fi
+
+# 检查日志错误
+if tail -n 100 /opt/dji-waypoint-mcp/logs/dji_waypoint_mcp.log | grep -q "ERROR"; then
+    echo "Errors found in logs"
+    exit 1
+fi
+
+echo "Service is healthy"
+exit 0
+EOF
+
+chmod +x /opt/dji-waypoint-mcp/health_check.sh
+
+# 添加到crontab进行定期检查
+echo "*/5 * * * * /opt/dji-waypoint-mcp/health_check.sh" | crontab -</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 故障排除 -->
+                    <section id="troubleshooting" class="deployment-section">
+                        <h2>故障排除</h2>
+
+                        <div class="troubleshooting-guide">
+                            <div class="issue">
+                                <h3>🔧 常见问题</h3>
+                                
+                                <div class="problem">
+                                    <h4>问题: 导入模块失败</h4>
+                                    <div class="solution">
+                                        <p><strong>症状:</strong> <code>ModuleNotFoundError: No module named 'src.dji_waypoint_mcp'</code></p>
+                                        <p><strong>解决方案:</strong></p>
+                                        <div class="code-block">
+                                            <pre><code># 确保Python路径正确
+export PYTHONPATH=$PYTHONPATH:$(pwd)/src
+
+# 或者使用绝对路径
+export PYTHONPATH=/path/to/dji-waypoint-mcp/src
+
+# 验证路径设置
+echo $PYTHONPATH</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="problem">
+                                    <h4>问题: 依赖包安装失败</h4>
+                                    <div class="solution">
+                                        <p><strong>症状:</strong> pip install 失败，特别是 GDAL 相关包</p>
+                                        <p><strong>解决方案:</strong></p>
+                                        <div class="code-block">
+                                            <pre><code># Ubuntu/Debian
+sudo apt-get install -y python3-dev libgdal-dev libproj-dev
+
+# macOS
+brew install gdal proj
+
+# CentOS/RHEL
+sudo yum install -y python3-devel gdal-devel proj-devel
+
+# 然后重新安装Python包
+pip install --upgrade pip
+pip install -r requirements.txt</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="problem">
+                                    <h4>问题: MCP客户端连接失败</h4>
+                                    <div class="solution">
+                                        <p><strong>症状:</strong> MCP客户端无法连接到服务</p>
+                                        <p><strong>解决方案:</strong></p>
+                                        <div class="code-block">
+                                            <pre><code># 检查服务是否正常启动
+python run_server.py
+
+# 检查配置文件格式
+python -c "import json; json.load(open('.kiro/settings/mcp.json'))"
+
+# 检查权限
+chmod +x run_server.py
+
+# 检查环境变量
+env | grep PYTHON</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="problem">
+                                    <h4>问题: 坐标转换不准确</h4>
+                                    <div class="solution">
+                                        <p><strong>症状:</strong> 坐标转换结果偏差较大</p>
+                                        <p><strong>解决方案:</strong></p>
+                                        <div class="code-block">
+                                            <pre><code># 检查坐标系统设置
+# 中国境内使用GCJ02，境外使用WGS84
+
+# 验证坐标范围
+# 纬度: -90 到 90
+# 经度: -180 到 180
+
+# 检查PROJ数据文件
+python -c "import pyproj; print(pyproj.datadir.get_data_dir())"</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="problem">
+                                    <h4>问题: KMZ文件无法导入DJI Pilot 2</h4>
+                                    <div class="solution">
+                                        <p><strong>症状:</strong> 生成的KMZ文件在DJI Pilot 2中无法识别</p>
+                                        <p><strong>解决方案:</strong></p>
+                                        <div class="code-block">
+                                            <pre><code># 检查文件格式和WPML标准兼容性
+unzip -l output/mission.kmz
+
+# 验证航点数量限制
+# 确保航点数量不超过99个
+
+# 检查文件编码
+file output/mission.kmz
+
+# 验证XML格式
+xmllint --noout waylines.wpml</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="debug-tools">
+                                <h3>🔍 调试工具</h3>
+                                
+                                <div class="debug-section">
+                                    <h4>日志分析</h4>
+                                    <div class="code-block">
+                                        <pre><code># 查看实时日志
+tail -f logs/dji_waypoint_mcp.log
+
+# 搜索错误信息
+grep -i error logs/dji_waypoint_mcp.log
+
+# 分析性能问题
+grep -i "execution_time" logs/dji_waypoint_mcp.log</code></pre>
+                                    </div>
+                                </div>
+
+                                <div class="debug-section">
+                                    <h4>性能监控</h4>
+                                    <div class="code-block">
+                                        <pre><code># 监控内存使用
+ps aux | grep python
+
+# 监控CPU使用
+top -p $(pgrep -f run_server.py)
+
+# 监控磁盘使用
+du -sh output/ temp/ logs/</code></pre>
+                                    </div>
+                                </div>
+
+                                <div class="debug-section">
+                                    <h4>网络诊断</h4>
+                                    <div class="code-block">
+                                        <pre><code># 检查端口占用
+netstat -tulpn | grep python
+
+# 检查进程状态
+ps aux | grep dji_waypoint_mcp
+
+# 检查文件描述符
+lsof -p $(pgrep -f run_server.py)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="support-info">
+                                <h3>📞 获取支持</h3>
+                                <div class="support-channels">
+                                    <div class="support-channel">
+                                        <h4>GitHub Issues</h4>
+                                        <p>报告bug和功能请求</p>
+                                        <a href="https://github.com/your-org/dji-waypoint-mcp/issues" target="_blank">提交Issue</a>
+                                    </div>
+                                    <div class="support-channel">
+                                        <h4>讨论区</h4>
+                                        <p>技术讨论和经验分享</p>
+                                        <a href="https://github.com/your-org/dji-waypoint-mcp/discussions" target="_blank">参与讨论</a>
+                                    </div>
+                                    <div class="support-channel">
+                                        <h4>文档</h4>
+                                        <p>详细的使用指南和API参考</p>
+                                        <a href="tools.html">查看文档</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>大疆航线规划MCP</h3>
+                    <p>专业的无人机航线规划解决方案</p>
+                </div>
+                <div class="footer-section">
+                    <h4>部署资源</h4>
+                    <ul>
+                        <li><a href="#requirements">环境要求</a></li>
+                        <li><a href="#installation">安装步骤</a></li>
+                        <li><a href="#docker">Docker部署</a></li>
+                        <li><a href="#troubleshooting">故障排除</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 大疆航线规划MCP服务. 采用 MIT 许可证.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

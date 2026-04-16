@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API参考 - 大疆航线规划MCP服务</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="DJI Waypoint MCP">
+                <span>大疆航线规划MCP</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="tools.html">工具文档</a></li>
+                <li><a href="deployment.html">部署指南</a></li>
+                <li><a href="examples.html">使用示例</a></li>
+                <li><a href="api.html" class="active">API参考</a></li>
+                <li><a href="https://github.com/your-org/dji-waypoint-mcp" target="_blank">GitHub</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="documentation">
+        <div class="container">
+            <div class="doc-layout">
+                <!-- 侧边栏导航 -->
+                <aside class="doc-sidebar">
+                    <div class="sidebar-content">
+                        <h3>API参考</h3>
+                        <ul class="api-nav">
+                            <li><a href="#overview">概述</a></li>
+                            <li><a href="#authentication">认证</a></li>
+                            <li><a href="#data-types">数据类型</a></li>
+                            <li><a href="#error-handling">错误处理</a></li>
+                            <li><a href="#rate-limits">速率限制</a></li>
+                            <li><a href="#tools-api">工具API</a></li>
+                            <li><a href="#webhooks">Webhooks</a></li>
+                            <li><a href="#sdks">SDK</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- 主要内容 -->
+                <div class="doc-content">
+                    <header class="doc-header">
+                        <h1>API参考文档</h1>
+                        <p>大疆航线规划MCP服务的完整API参考，包括所有工具的详细接口说明。</p>
+                    </header>
+
+                    <!-- API概述 -->
+                    <section id="overview" class="api-section">
+                        <h2>概述</h2>
+                        <div class="api-description">
+                            <p>大疆航线规划MCP服务基于Model Context Protocol (MCP)标准，提供了一套完整的无人机航线规划API。</p>
+                        </div>
+
+                        <h3>基本信息</h3>
+                        <div class="info-table">
+                            <table>
+                                <tr>
+                                    <td><strong>协议版本</strong></td>
+                                    <td>MCP 1.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>服务版本</strong></td>
+                                    <td>1.0.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>通信方式</strong></td>
+                                    <td>JSON-RPC over stdio</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>编码格式</strong></td>
+                                    <td>UTF-8</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h3>支持的功能</h3>
+                        <div class="capabilities">
+                            <ul>
+                                <li>✅ <strong>Tools</strong> - 10个专业航线规划工具</li>
+                                <li>❌ <strong>Resources</strong> - 暂不支持资源访问</li>
+                                <li>❌ <strong>Prompts</strong> - 暂不支持提示模板</li>
+                                <li>✅ <strong>Logging</strong> - 完整的日志记录</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- 认证 -->
+                    <section id="authentication" class="api-section">
+                        <h2>认证</h2>
+                        <div class="api-description">
+                            <p>当前版本的MCP服务运行在本地环境，通过stdio通信，无需额外认证。</p>
+                        </div>
+
+                        <h3>连接方式</h3>
+                        <div class="code-block">
+                            <pre><code># 直接启动服务
+python run_server.py
+
+# 或通过MCP客户端连接
+{
+  "command": "python",
+  "args": ["run_server.py"],
+  "env": {
+    "PYTHONPATH": ".",
+    "LOG_LEVEL": "INFO"
+  }
+}</code></pre>
+                        </div>
+
+                        <h3>未来版本</h3>
+                        <div class="future-auth">
+                            <p>未来版本将支持以下认证方式：</p>
+                            <ul>
+                                <li>API Key认证</li>
+                                <li>JWT Token认证</li>
+                                <li>OAuth 2.0认证</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- 数据类型 -->
+                    <section id="data-types" class="api-section">
+                        <h2>数据类型</h2>
+
+                        <h3>基础类型</h3>
+                        <div class="type-definitions">
+                            <div class="type-def">
+                                <h4>Coordinate (坐标)</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "latitude": number,   // 纬度 (-90 到 90)
+  "longitude": number,  // 经度 (-180 到 180)
+  "altitude": number    // 高度 (米，可选)
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="type-def">
+                                <h4>Waypoint (航点)</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "latitude": number,
+  "longitude": number,
+  "altitude": number,
+  "actions": Action[],  // 航点动作列表
+  "speed": number,      // 航点速度 (可选)
+  "heading": number     // 航向角 (可选)
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="type-def">
+                                <h4>Action (动作)</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "type": string,       // 动作类型
+  "parameters": object  // 动作参数 (可选)
+}
+
+// 支持的动作类型:
+// - "take_photo": 拍照
+// - "start_record": 开始录像
+// - "stop_record": 停止录像
+// - "gimbal_pitch": 云台俯仰
+// - "hover": 悬停
+// - "rotate_aircraft": 飞机旋转</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="type-def">
+                                <h4>SurveyArea (测区)</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "type": "rectangle" | "polygon",
+  "coordinates": Coordinate[]
+}
+
+// 矩形: [左下角, 右上角]
+// 多边形: [点1, 点2, ..., 点1] (闭合)</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="type-def">
+                                <h4>FlightParams (飞行参数)</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "speed": number,              // 飞行速度 (m/s)
+  "altitude": number,           // 飞行高度 (m)
+  "heading_mode": string,       // 航向模式
+  "turn_mode": string,          // 转弯模式
+  "gimbal_pitch": number        // 云台俯仰角 (可选)
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>响应类型</h3>
+                        <div class="response-types">
+                            <div class="type-def">
+                                <h4>ToolResponse (工具响应)</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "success": boolean,
+  "message": string,
+  "data": object,       // 具体数据 (成功时)
+  "error": string,      // 错误信息 (失败时)
+  "error_code": string  // 错误代码 (失败时)
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 错误处理 -->
+                    <section id="error-handling" class="api-section">
+                        <h2>错误处理</h2>
+
+                        <h3>错误响应格式</h3>
+                        <div class="code-block">
+                            <pre><code>{
+  "success": false,
+  "error": true,
+  "message": "错误描述信息",
+  "error_code": "ERROR_CODE",
+  "details": {
+    "parameter": "参数名",
+    "value": "参数值",
+    "expected": "期望值"
+  },
+  "suggestions": [
+    "解决建议1",
+    "解决建议2"
+  ]
+}</code></pre>
+                        </div>
+
+                        <h3>常见错误代码</h3>
+                        <div class="error-codes">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>错误代码</th>
+                                        <th>描述</th>
+                                        <th>解决方案</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>VALIDATION_ERROR</code></td>
+                                        <td>参数验证失败</td>
+                                        <td>检查输入参数格式和范围</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>AIRCRAFT_COMPATIBILITY_ERROR</code></td>
+                                        <td>设备兼容性错误</td>
+                                        <td>选择支持的设备型号</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>COORDINATE_ERROR</code></td>
+                                        <td>坐标系统错误</td>
+                                        <td>检查坐标格式和范围</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>PERFORMANCE_LIMITATION</code></td>
+                                        <td>性能限制</td>
+                                        <td>调整任务参数或分段执行</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>FILE_GENERATION_ERROR</code></td>
+                                        <td>文件生成失败</td>
+                                        <td>检查输出目录权限</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- 工具API -->
+                    <section id="tools-api" class="api-section">
+                        <h2>工具API</h2>
+
+                        <h3>API调用格式</h3>
+                        <div class="code-block">
+                            <pre><code>// MCP工具调用格式
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "tool_name",
+    "arguments": {
+      // 工具参数
+    }
+  }
+}</code></pre>
+                        </div>
+
+                        <h3>工具列表</h3>
+                        <div class="tools-api-list">
+                            <div class="tool-api">
+                                <h4>plan_waypoint_mission</h4>
+                                <p><strong>功能:</strong> 规划航点飞行任务</p>
+                                <div class="code-block">
+                                    <pre><code>// 请求参数
+{
+  "waypoints": Waypoint[],
+  "aircraft_type": string,
+  "flight_params": FlightParams
+}
+
+// 响应数据
+{
+  "success": true,
+  "data": {
+    "flight_path": {
+      "waypoint_count": number,
+      "total_distance": number,
+      "estimated_flight_time": number
+    },
+    "mission_config": {
+      "aircraft_type": string,
+      "flight_speed": number,
+      "flight_altitude": number
+    },
+    "waypoints": Waypoint[]
+  }
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="tool-api">
+                                <h4>plan_mapping_mission</h4>
+                                <p><strong>功能:</strong> 规划建图航拍任务</p>
+                                <div class="code-block">
+                                    <pre><code>// 请求参数
+{
+  "survey_area": SurveyArea,
+  "mapping_params": {
+    "altitude": number,
+    "overlap_rate": {
+      "front": number,
+      "side": number
+    },
+    "direction": number,
+    "margin": number
+  },
+  "aircraft_type": string
+}
+
+// 响应数据
+{
+  "success": true,
+  "data": {
+    "flight_lines": number,
+    "total_waypoints": number,
+    "coverage_area": number,
+    "estimated_photos": number,
+    "flight_distance": number,
+    "flight_time": number,
+    "waypoints": Waypoint[]
+  }
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="tool-api">
+                                <h4>optimize_route</h4>
+                                <p><strong>功能:</strong> 优化航线路径</p>
+                                <div class="code-block">
+                                    <pre><code>// 请求参数
+{
+  "waypoints": Waypoint[],
+  "optimization_method": "nearest_neighbor" | "genetic_algorithm" | "simulated_annealing" | "two_opt" | "christofides",
+  "optimization_objective": "minimize_distance" | "minimize_time" | "minimize_energy" | "balanced",
+  "flight_speed": number,
+  "start_point_fixed": boolean,
+  "max_iterations": number
+}
+
+// 响应数据
+{
+  "success": true,
+  "data": {
+    "optimized_waypoints": Waypoint[],
+    "optimized_distance": number,
+    "original_distance": number,
+    "distance_saved": number,
+    "time_saved": number,
+    "optimization_stats": {
+      "method": string,
+      "iterations": number,
+      "execution_time": number
+    }
+  }
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="tool-api">
+                                <h4>generate_kmz</h4>
+                                <p><strong>功能:</strong> 生成KMZ文件</p>
+                                <div class="code-block">
+                                    <pre><code>// 请求参数
+{
+  "flight_plan": object,
+  "output_filename": string,
+  "include_template": boolean,
+  "include_resources": boolean,
+  "author": string,
+  "metadata": object
+}
+
+// 响应数据
+{
+  "success": true,
+  "data": {
+    "file_path": string,
+    "file_size": number,
+    "flight_lines": number,
+    "waypoint_count": number,
+    "generated_at": string
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SDK -->
+                    <section id="sdks" class="api-section">
+                        <h2>SDK和客户端库</h2>
+
+                        <h3>Python SDK</h3>
+                        <div class="code-block">
+                            <pre><code>from mcp_client import MCPClient
+
+# 创建客户端
+client = MCPClient("dji-waypoint-mcp")
+
+# 调用工具
+result = await client.call_tool(
+    "plan_waypoint_mission",
+    {
+        "waypoints": [...],
+        "aircraft_type": "M30",
+        "flight_params": {...}
+    }
+)
+
+print(result)</code></pre>
+                        </div>
+
+                        <h3>JavaScript SDK</h3>
+                        <div class="code-block">
+                            <pre><code>import { MCPClient } from 'mcp-client-js';
+
+// 创建客户端
+const client = new MCPClient('dji-waypoint-mcp');
+
+// 调用工具
+const result = await client.callTool('plan_waypoint_mission', {
+    waypoints: [...],
+    aircraft_type: 'M30',
+    flight_params: {...}
+});
+
+console.log(result);</code></pre>
+                        </div>
+
+                        <h3>REST API封装</h3>
+                        <div class="code-block">
+                            <pre><code>// 使用HTTP客户端
+const response = await fetch('/api/missions', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        type: 'waypoint',
+        config: {
+            waypoints: [...],
+            aircraft_type: 'M30'
+        }
+    })
+});
+
+const result = await response.json();</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- 版本历史 -->
+                    <section id="changelog" class="api-section">
+                        <h2>版本历史</h2>
+
+                        <div class="changelog">
+                            <div class="version">
+                                <h3>v1.0.0 (2024-07-20)</h3>
+                                <ul>
+                                    <li>✅ 初始版本发布</li>
+                                    <li>✅ 10个核心工具实现</li>
+                                    <li>✅ WPML标准支持</li>
+                                    <li>✅ 多种优化算法</li>
+                                    <li>✅ 完整的错误处理</li>
+                                </ul>
+                            </div>
+
+                            <div class="version">
+                                <h3>v0.9.0 (2024-07-15)</h3>
+                                <ul>
+                                    <li>🧪 Beta版本</li>
+                                    <li>✅ 基础工具实现</li>
+                                    <li>✅ 测试覆盖率达到90%</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>大疆航线规划MCP</h3>
+                    <p>专业的无人机航线规划解决方案</p>
+                </div>
+                <div class="footer-section">
+                    <h4>API文档</h4>
+                    <ul>
+                        <li><a href="#overview">API概述</a></li>
+                        <li><a href="#data-types">数据类型</a></li>
+                        <li><a href="#tools-api">工具API</a></li>
+                        <li><a href="#sdks">SDK</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 大疆航线规划MCP服务. 采用 MIT 许可证.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

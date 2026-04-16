@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用示例 - 大疆航线规划MCP服务</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="DJI Waypoint MCP">
+                <span>大疆航线规划MCP</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="tools.html">工具文档</a></li>
+                <li><a href="deployment.html">部署指南</a></li>
+                <li><a href="examples.html" class="active">使用示例</a></li>
+                <li><a href="api.html">API参考</a></li>
+                <li><a href="https://github.com/your-org/dji-waypoint-mcp" target="_blank">GitHub</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="documentation">
+        <div class="container">
+            <div class="doc-layout">
+                <!-- 侧边栏导航 -->
+                <aside class="doc-sidebar">
+                    <div class="sidebar-content">
+                        <h3>使用示例</h3>
+                        <ul class="example-nav">
+                            <li><a href="#basic-waypoint">基础航点飞行</a></li>
+                            <li><a href="#mapping-survey">建图测绘任务</a></li>
+                            <li><a href="#oblique-photography">倾斜摄影</a></li>
+                            <li><a href="#pipeline-inspection">管道巡检</a></li>
+                            <li><a href="#route-optimization">路径优化</a></li>
+                            <li><a href="#multi-flight">多航线协调</a></li>
+                            <li><a href="#batch-processing">批量处理</a></li>
+                            <li><a href="#integration">系统集成</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- 主要内容 -->
+                <div class="doc-content">
+                    <header class="doc-header">
+                        <h1>使用示例</h1>
+                        <p>通过实际案例学习如何使用大疆航线规划MCP服务的各种功能。每个示例都包含完整的代码和详细说明。</p>
+                    </header>
+
+                    <!-- 基础航点飞行示例 -->
+                    <section id="basic-waypoint" class="example-section">
+                        <h2>1. 基础航点飞行</h2>
+                        <div class="example-description">
+                            <p>最简单的航点飞行任务，适用于需要精确控制飞行路径的场景。</p>
+                        </div>
+
+                        <h3>场景描述</h3>
+                        <div class="scenario">
+                            <ul>
+                                <li><strong>任务目标:</strong> 在指定的几个点进行拍照</li>
+                                <li><strong>飞行高度:</strong> 100米</li>
+                                <li><strong>飞行速度:</strong> 5m/s</li>
+                                <li><strong>使用机型:</strong> DJI M30</li>
+                            </ul>
+                        </div>
+
+                        <h3>完整示例代码</h3>
+                        <div class="code-block">
+                            <pre><code>import asyncio
+from mcp_client import MCPClient
+
+async def basic_waypoint_mission():
+    """基础航点飞行任务示例"""
+    
+    # 连接MCP服务
+    client = MCPClient("dji-waypoint-mcp")
+    
+    # 定义航点飞行任务
+    mission_config = {
+        "waypoints": [
+            {
+                "latitude": 39.9042,
+                "longitude": 116.4074,
+                "altitude": 100.0,
+                "actions": [
+                    {
+                        "type": "take_photo",
+                        "parameters": {
+                            "suffix": "point_01"
+                        }
+                    }
+                ]
+            },
+            {
+                "latitude": 39.9142,
+                "longitude": 116.4174,
+                "altitude": 100.0,
+                "actions": [
+                    {
+                        "type": "gimbal_pitch",
+                        "parameters": {
+                            "angle": -45
+                        }
+                    },
+                    {
+                        "type": "take_photo",
+                        "parameters": {
+                            "suffix": "point_02"
+                        }
+                    }
+                ]
+            },
+            {
+                "latitude": 39.9242,
+                "longitude": 116.4274,
+                "altitude": 100.0,
+                "actions": [
+                    {
+                        "type": "hover",
+                        "parameters": {
+                            "duration": 3.0
+                        }
+                    },
+                    {
+                        "type": "take_photo",
+                        "parameters": {
+                            "suffix": "point_03"
+                        }
+                    }
+                ]
+            }
+        ],
+        "aircraft_type": "M30",
+        "flight_params": {
+            "speed": 5.0,
+            "altitude": 100.0,
+            "heading_mode": "follow_wayline",
+            "turn_mode": "to_point_stop"
+        }
+    }
+    
+    try:
+        # 调用航点规划工具
+        result = await client.call_tool(
+            "plan_waypoint_mission",
+            mission_config
+        )
+        
+        if result["success"]:
+            print("✅ 航点任务规划成功!")
+            print(f"📊 任务统计:")
+            print(f"   - 航点数量: {result['data']['flight_path']['waypoint_count']}")
+            print(f"   - 总距离: {result['data']['flight_path']['total_distance']:.1f}米")
+            print(f"   - 预计飞行时间: {result['data']['flight_path']['estimated_flight_time']:.1f}秒")
+            
+            # 生成KMZ文件
+            kmz_result = await client.call_tool(
+                "generate_kmz",
+                {
+                    "flight_plan": result["data"],
+                    "output_filename": "basic_waypoint_mission.kmz",
+                    "include_template": True,
+                    "author": "航线规划示例"
+                }
+            )
+            
+            if kmz_result["success"]:
+                print("📁 KMZ文件生成成功: basic_waypoint_mission.kmz")
+            
+        else:
+            print(f"❌ 任务规划失败: {result['message']}")
+            
+    except Exception as e:
+        print(f"💥 执行出错: {e}")
+
+# 运行示例
+if __name__ == "__main__":
+    asyncio.run(basic_waypoint_mission())</code></pre>
+                        </div>
+
+                        <h3>执行结果</h3>
+                        <div class="result-output">
+                            <div class="code-block">
+                                <pre><code>✅ 航点任务规划成功!
+📊 任务统计:
+   - 航点数量: 3
+   - 总距离: 2847.2米
+   - 预计飞行时间: 569.4秒
+📁 KMZ文件生成成功: basic_waypoint_mission.kmz</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 建图测绘任务示例 -->
+                    <section id="mapping-survey" class="example-section">
+                        <h2>2. 建图测绘任务</h2>
+                        <div class="example-description">
+                            <p>自动生成建图航拍任务，适用于地形测绘和正射影像采集。</p>
+                        </div>
+
+                        <h3>场景描述</h3>
+                        <div class="scenario">
+                            <ul>
+                                <li><strong>测区类型:</strong> 矩形区域</li>
+                                <li><strong>测区大小:</strong> 1km × 1km</li>
+                                <li><strong>飞行高度:</strong> 120米</li>
+                                <li><strong>重叠率:</strong> 航向80%，旁向70%</li>
+                                <li><strong>使用机型:</strong> DJI M30</li>
+                            </ul>
+                        </div>
+
+                        <h3>完整示例代码</h3>
+                        <div class="code-block">
+                            <pre><code>import asyncio
+from mcp_client import MCPClient
+
+async def mapping_survey_mission():
+    """建图测绘任务示例"""
+    
+    client = MCPClient("dji-waypoint-mcp")
+    
+    # 定义测区范围 (北京某区域)
+    survey_config = {
+        "survey_area": {
+            "type": "rectangle",
+            "coordinates": [
+                [116.4074, 39.9042],  # 左下角
+                [116.4174, 39.9142]   # 右上角
+            ]
+        },
+        "mapping_params": {
+            "altitude": 120.0,
+            "overlap_rate": {
+                "front": 0.8,  # 航向重叠率80%
+                "side": 0.7    # 旁向重叠率70%
+            },
+            "direction": 0,     # 航线方向 (0度=北向)
+            "margin": 20.0,     # 边界扩展20米
+            "shoot_type": "distance",  # 按距离拍照
+            "photo_interval": 30.0     # 拍照间隔30米
+        },
+        "aircraft_type": "M30"
+    }
+    
+    try:
+        print("🚁 开始规划建图测绘任务...")
+        
+        # 调用建图规划工具
+        result = await client.call_tool(
+            "plan_mapping_mission",
+            survey_config
+        )
+        
+        if result["success"]:
+            mission_data = result["data"]
+            print("✅ 建图任务规划成功!")
+            print(f"📊 任务详情:")
+            print(f"   - 航线数量: {mission_data['flight_lines']}")
+            print(f"   - 航点总数: {mission_data['total_waypoints']}")
+            print(f"   - 覆盖面积: {mission_data['coverage_area']:.2f}平方公里")
+            print(f"   - 预计拍照数: {mission_data['estimated_photos']}")
+            print(f"   - 飞行距离: {mission_data['flight_distance']:.1f}米")
+            print(f"   - 飞行时间: {mission_data['flight_time']:.1f}分钟")
+            
+            # 路径优化
+            print("\n🔧 正在优化航线路径...")
+            optimize_result = await client.call_tool(
+                "optimize_route",
+                {
+                    "waypoints": mission_data["waypoints"],
+                    "optimization_method": "two_opt",
+                    "optimization_objective": "minimize_distance",
+                    "flight_speed": 6.0
+                }
+            )
+            
+            if optimize_result["success"]:
+                optimized_data = optimize_result["data"]
+                print("✅ 路径优化完成!")
+                print(f"   - 优化前距离: {mission_data['flight_distance']:.1f}米")
+                print(f"   - 优化后距离: {optimized_data['optimized_distance']:.1f}米")
+                print(f"   - 节省距离: {mission_data['flight_distance'] - optimized_data['optimized_distance']:.1f}米")
+                print(f"   - 节省时间: {optimized_data['time_saved']:.1f}分钟")
+                
+                # 使用优化后的数据生成KMZ
+                final_data = optimized_data
+            else:
+                print("⚠️ 路径优化失败，使用原始路径")
+                final_data = mission_data
+            
+            # 生成KMZ文件
+            print("\n📁 正在生成KMZ文件...")
+            kmz_result = await client.call_tool(
+                "generate_kmz",
+                {
+                    "flight_plan": final_data,
+                    "output_filename": "mapping_survey_mission.kmz",
+                    "include_template": True,
+                    "include_resources": True,
+                    "author": "测绘工程师",
+                    "metadata": {
+                        "mission_name": "建图测绘任务_001",
+                        "description": f"覆盖面积{mission_data['coverage_area']:.2f}平方公里的建图任务",
+                        "survey_date": "2024-07-20"
+                    }
+                }
+            )
+            
+            if kmz_result["success"]:
+                print("✅ KMZ文件生成成功!")
+                print(f"📄 文件路径: {kmz_result['data']['file_path']}")
+                print(f"📏 文件大小: {kmz_result['data']['file_size']} KB")
+            
+        else:
+            print(f"❌ 建图任务规划失败: {result['message']}")
+            
+    except Exception as e:
+        print(f"💥 执行出错: {e}")
+
+# 运行示例
+if __name__ == "__main__":
+    asyncio.run(mapping_survey_mission())</code></pre>
+                        </div>
+
+                        <h3>执行结果</h3>
+                        <div class="result-output">
+                            <div class="code-block">
+                                <pre><code>🚁 开始规划建图测绘任务...
+✅ 建图任务规划成功!
+📊 任务详情:
+   - 航线数量: 12
+   - 航点总数: 156
+   - 覆盖面积: 1.02平方公里
+   - 预计拍照数: 234
+   - 飞行距离: 4567.8米
+   - 飞行时间: 15.2分钟
+
+🔧 正在优化航线路径...
+✅ 路径优化完成!
+   - 优化前距离: 4567.8米
+   - 优化后距离: 4234.5米
+   - 节省距离: 333.3米
+   - 节省时间: 1.1分钟
+
+📁 正在生成KMZ文件...
+✅ KMZ文件生成成功!
+📄 文件路径: output/mapping_survey_mission.kmz
+📏 文件大小: 45 KB</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 倾斜摄影示例 -->
+                    <section id="oblique-photography" class="example-section">
+                        <h2>3. 倾斜摄影任务</h2>
+                        <div class="example-description">
+                            <p>生成倾斜摄影任务，用于三维建模和倾斜摄影测量。</p>
+                        </div>
+
+                        <h3>场景描述</h3>
+                        <div class="scenario">
+                            <ul>
+                                <li><strong>目标建筑:</strong> 高层建筑群</li>
+                                <li><strong>倾斜角度:</strong> -45度</li>
+                                <li><strong>飞行方向:</strong> 四个方向 (0°, 90°, 180°, 270°)</li>
+                                <li><strong>包含正射:</strong> 是</li>
+                                <li><strong>使用机型:</strong> DJI M300 RTK</li>
+                            </ul>
+                        </div>
+
+                        <h3>完整示例代码</h3>
+                        <div class="code-block">
+                            <pre><code>import asyncio
+from mcp_client import MCPClient
+
+async def oblique_photography_mission():
+    """倾斜摄影任务示例"""
+    
+    client = MCPClient("dji-waypoint-mcp")
+    
+    # 定义倾斜摄影任务
+    oblique_config = {
+        "survey_area": {
+            "type": "polygon",
+            "coordinates": [
+                [116.4074, 39.9042],
+                [116.4174, 39.9042],
+                [116.4174, 39.9142],
+                [116.4074, 39.9142],
+                [116.4074, 39.9042]  # 闭合多边形
+            ]
+        },
+        "oblique_params": {
+            "altitude": 150.0,
+            "overlap_rate": {
+                "front": 0.8,
+                "side": 0.7
+            },
+            "oblique_angle": -45.0,  # 倾斜角度
+            "directions": [0, 90, 180, 270],  # 四个方向
+            "nadir_flight": True,    # 包含正射航线
+            "flight_speed": 6.0,
+            "gimbal_mode": "free"    # 云台自由模式
+        },
+        "aircraft_type": "M300_RTK"
+    }
+    
+    try:
+        print("📸 开始规划倾斜摄影任务...")
+        
+        # 调用倾斜摄影规划工具
+        result = await client.call_tool(
+            "plan_oblique_mission",
+            oblique_config
+        )
+        
+        if result["success"]:
+            mission_data = result["data"]
+            print("✅ 倾斜摄影任务规划成功!")
+            print(f"📊 任务统计:")
+            print(f"   - 飞行架次: {mission_data['flight_count']}")
+            print(f"   - 正射航线: {'包含' if mission_data['nadir_included'] else '不包含'}")
+            print(f"   - 倾斜方向: {len(mission_data['oblique_directions'])}个")
+            print(f"   - 总航点数: {mission_data['total_waypoints']}")
+            print(f"   - 预计拍照: {mission_data['estimated_photos']}")
+            print(f"   - 总飞行距离: {mission_data['total_distance']:.1f}米")
+            print(f"   - 总飞行时间: {mission_data['total_time']:.1f}分钟")
+            
+            # 显示各个方向的详细信息
+            print(f"\n📋 各方向详情:")
+            for direction_info in mission_data['direction_details']:
+                direction = direction_info['direction']
+                direction_name = {0: '北向', 90: '东向', 180: '南向', 270: '西向', -1: '正射'}
+                print(f"   - {direction_name.get(direction, f'{direction}°')}: "
+                      f"{direction_info['waypoints']}个航点, "
+                      f"{direction_info['distance']:.1f}米, "
+                      f"{direction_info['photos']}张照片")
+            
+            # 验证任务兼容性
+            print(f"\n🔍 验证任务兼容性...")
+            validation_result = await client.call_tool(
+                "validate_mission_compatibility",
+                {
+                    "validation_type": "mission_compatibility",
+                    "aircraft_id": "M300_RTK",
+                    "mission_config": {
+                        "flight_height": oblique_config["oblique_params"]["altitude"],
+                        "flight_speed": oblique_config["oblique_params"]["flight_speed"],
+                        "gimbal_pitch": oblique_config["oblique_params"]["oblique_angle"],
+                        "total_waypoints": mission_data["total_waypoints"],
+                        "flight_time": mission_data["total_time"]
+                    }
+                }
+            )
+            
+            if validation_result["success"]:
+                validation_data = validation_result["data"]
+                print("✅ 兼容性验证通过!")
+                if validation_data.get("warnings"):
+                    print("⚠️ 注意事项:")
+                    for warning in validation_data["warnings"]:
+                        print(f"   - {warning}")
+                        
+                if validation_data.get("recommendations"):
+                    print("💡 优化建议:")
+                    for rec in validation_data["recommendations"]:
+                        print(f"   - {rec}")
+            
+            # 生成KMZ文件
+            print(f"\n📁 正在生成KMZ文件...")
+            kmz_result = await client.call_tool(
+                "generate_kmz",
+                {
+                    "flight_plan": mission_data,
+                    "output_filename": "oblique_photography_mission.kmz",
+                    "include_template": True,
+                    "include_resources": True,
+                    "author": "三维建模工程师",
+                    "metadata": {
+                        "mission_name": "倾斜摄影任务_001",
+                        "description": "高层建筑群三维建模倾斜摄影",
+                        "oblique_angle": oblique_config["oblique_params"]["oblique_angle"],
+                        "directions": oblique_config["oblique_params"]["directions"]
+                    }
+                }
+            )
+            
+            if kmz_result["success"]:
+                print("✅ KMZ文件生成成功!")
+                print(f"📄 文件信息:")
+                print(f"   - 文件路径: {kmz_result['data']['file_path']}")
+                print(f"   - 文件大小: {kmz_result['data']['file_size']} KB")
+                print(f"   - 包含航线: {kmz_result['data']['flight_lines']}条")
+            
+        else:
+            print(f"❌ 倾斜摄影任务规划失败: {result['message']}")
+            
+    except Exception as e:
+        print(f"💥 执行出错: {e}")
+
+# 运行示例
+if __name__ == "__main__":
+    asyncio.run(oblique_photography_mission())</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- 管道巡检示例 -->
+                    <section id="pipeline-inspection" class="example-section">
+                        <h2>4. 管道巡检任务</h2>
+                        <div class="example-description">
+                            <p>规划线性管道巡检任务，适用于石油、天然气管道的定期检查。</p>
+                        </div>
+
+                        <h3>完整示例代码</h3>
+                        <div class="code-block">
+                            <pre><code>import asyncio
+from mcp_client import MCPClient
+
+async def pipeline_inspection_mission():
+    """管道巡检任务示例"""
+    
+    client = MCPClient("dji-waypoint-mcp")
+    
+    # 定义管道路径点
+    pipeline_config = {
+        "strip_type": "pipeline",
+        "flight_pattern": "parallel_lines",
+        "path_points": [
+            {"latitude": 39.9042, "longitude": 116.4074},
+            {"latitude": 39.9142, "longitude": 116.4174},
+            {"latitude": 39.9242, "longitude": 116.4274},
+            {"latitude": 39.9342, "longitude": 116.4374},
+            {"latitude": 39.9442, "longitude": 116.4474}
+        ],
+        "strip_width": 100.0,      # 巡检带宽100米
+        "flight_height": 80.0,     # 飞行高度80米
+        "flight_speed": 8.0,       # 飞行速度8m/s
+        "overlap_rate": 70.0,      # 重叠率70%
+        "inspection_params": {
+            "photo_interval": 20.0,     # 每20米拍照
+            "video_recording": True,    # 同时录像
+            "thermal_imaging": False,   # 不使用热成像
+            "inspection_angle": -60     # 检查角度-60度
+        },
+        "aircraft_type": "M30"
+    }
+    
+    try:
+        print("🔍 开始规划管道巡检任务...")
+        
+        # 调用航带规划工具
+        result = await client.call_tool(
+            "plan_strip_mission",
+            pipeline_config
+        )
+        
+        if result["success"]:
+            mission_data = result["data"]
+            print("✅ 管道巡检任务规划成功!")
+            print(f"📊 任务统计:")
+            print(f"   - 管道总长: {mission_data['pipeline_length']:.1f}米")
+            print(f"   - 巡检带宽: {mission_data['strip_width']:.1f}米")
+            print(f"   - 航线数量: {mission_data['flight_lines']}")
+            print(f"   - 航点总数: {mission_data['total_waypoints']}")
+            print(f"   - 飞行距离: {mission_data['flight_distance']:.1f}米")
+            print(f"   - 飞行时间: {mission_data['flight_time']:.1f}分钟")
+            print(f"   - 预计拍照: {mission_data['estimated_photos']}")
+            
+            # 分析覆盖情况
+            print(f"\n📈 覆盖分析:")
+            coverage_result = await client.call_tool(
+                "utility_functions",
+                {
+                    "function_type": "analyze_flight_plan",
+                    "waypoints": mission_data["waypoints"],
+                    "flight_speed": pipeline_config["flight_speed"],
+                    "include_detailed_stats": True,
+                    "analyze_efficiency": True
+                }
+            )
+            
+            if coverage_result["success"]:
+                coverage_data = coverage_result["data"]
+                print(f"   - 覆盖完整性: {coverage_data['coverage_completeness']:.1f}%")
+                print(f"   - 重叠区域: {coverage_data['overlap_area']:.1f}%")
+                print(f"   - 飞行效率: {coverage_data['flight_efficiency']:.1f}%")
+                print(f"   - 能耗估算: {coverage_data['energy_consumption']:.1f}%")
+            
+            # 生成多个输出文件
+            print(f"\n📁 正在生成任务文件...")
+            
+            # 生成主任务KMZ
+            kmz_result = await client.call_tool(
+                "generate_kmz",
+                {
+                    "flight_plan": mission_data,
+                    "output_filename": "pipeline_inspection_main.kmz",
+                    "include_template": True,
+                    "author": "管道巡检工程师",
+                    "metadata": {
+                        "mission_name": "管道巡检任务_001",
+                        "description": f"总长{mission_data['pipeline_length']:.1f}米管道巡检",
+                        "inspection_date": "2024-07-20",
+                        "pipeline_id": "PL-001"
+                    }
+                }
+            )
+            
+            if kmz_result["success"]:
+                print(f"✅ 主任务文件: {kmz_result['data']['file_path']}")
+            
+            # 如果航线较长，分段生成
+            if mission_data['flight_lines'] > 5:
+                print(f"📦 航线较长，正在分段生成...")
+                
+                segment_result = await client.call_tool(
+                    "coordinate_multi_flights",
+                    {
+                        "flight_plans": [
+                            {
+                                "plan_id": f"segment_{i+1}",
+                                "priority": i+1,
+                                "waypoints": segment["waypoints"],
+                                "aircraft_type": "M30"
+                            }
+                            for i, segment in enumerate(mission_data["segments"])
+                        ],
+                        "coordination_strategy": "sequential",
+                        "safety_buffer": 50.0,
+                        "time_constraints": {
+                            "max_single_flight": 1200  # 20分钟
+                        }
+                    }
+                )
+                
+                if segment_result["success"]:
+                    segment_data = segment_result["data"]
+                    print(f"✅ 分段协调完成!")
+                    print(f"   - 分段数量: {segment_data['segment_count']}")
+                    print(f"   - 预计总时间: {segment_data['total_time']:.1f}分钟")
+                    
+                    # 为每个分段生成KMZ
+                    for i, segment in enumerate(segment_data["segments"]):
+                        segment_kmz = await client.call_tool(
+                            "generate_kmz",
+                            {
+                                "flight_plan": segment,
+                                "output_filename": f"pipeline_inspection_segment_{i+1}.kmz",
+                                "include_template": True,
+                                "author": "管道巡检工程师"
+                            }
+                        )
+                        if segment_kmz["success"]:
+                            print(f"   📄 分段{i+1}: {segment_kmz['data']['file_path']}")
+            
+        else:
+            print(f"❌ 管道巡检任务规划失败: {result['message']}")
+            
+    except Exception as e:
+        print(f"💥 执行出错: {e}")
+
+# 运行示例
+if __name__ == "__main__":
+    asyncio.run(pipeline_inspection_mission())</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- 批量处理示例 -->
+                    <section id="batch-processing" class="example-section">
+                        <h2>7. 批量处理任务</h2>
+                        <div class="example-description">
+                            <p>演示如何批量处理多个任务，适用于大规模作业场景。</p>
+                        </div>
+
+                        <h3>完整示例代码</h3>
+                        <div class="code-block">
+                            <pre><code>import asyncio
+import json
+from pathlib import Path
+from mcp_client import MCPClient
+
+async def batch_processing_example():
+    """批量处理任务示例"""
+    
+    client = MCPClient("dji-waypoint-mcp")
+    
+    # 定义多个任务配置
+    batch_tasks = [
+        {
+            "task_id": "mapping_001",
+            "task_type": "mapping",
+            "priority": 1,
+            "config": {
+                "survey_area": {
+                    "type": "rectangle",
+                    "coordinates": [[116.4074, 39.9042], [116.4174, 39.9142]]
+                },
+                "mapping_params": {
+                    "altitude": 120.0,
+                    "overlap_rate": {"front": 0.8, "side": 0.7}
+                },
+                "aircraft_type": "M30"
+            }
+        },
+        {
+            "task_id": "waypoint_002",
+            "task_type": "waypoint",
+            "priority": 2,
+            "config": {
+                "waypoints": [
+                    {"latitude": 39.9242, "longitude": 116.4274, "altitude": 100.0,
+                     "actions": [{"type": "take_photo"}]},
+                    {"latitude": 39.9342, "longitude": 116.4374, "altitude": 100.0,
+                     "actions": [{"type": "take_photo"}]}
+                ],
+                "aircraft_type": "M30",
+                "flight_params": {"speed": 5.0, "altitude": 100.0}
+            }
+        },
+        {
+            "task_id": "strip_003",
+            "task_type": "strip",
+            "priority": 3,
+            "config": {
+                "strip_type": "powerline",
+                "flight_pattern": "single_line",
+                "path_points": [
+                    {"latitude": 39.9442, "longitude": 116.4474},
+                    {"latitude": 39.9542, "longitude": 116.4574}
+                ],
+                "strip_width": 80.0,
+                "flight_height": 60.0,
+                "aircraft_type": "M30"
+            }
+        }
+    ]
+    
+    # 批量处理结果
+    batch_results = []
+    
+    try:
+        print("🚀 开始批量处理任务...")
+        print(f"📋 任务总数: {len(batch_tasks)}")
+        
+        for i, task in enumerate(batch_tasks, 1):
+            print(f"\n📝 处理任务 {i}/{len(batch_tasks)}: {task['task_id']}")
+            
+            # 根据任务类型调用相应工具
+            tool_mapping = {
+                "mapping": "plan_mapping_mission",
+                "waypoint": "plan_waypoint_mission", 
+                "strip": "plan_strip_mission"
+            }
+            
+            tool_name = tool_mapping.get(task["task_type"])
+            if not tool_name:
+                print(f"❌ 未知任务类型: {task['task_type']}")
+                continue
+            
+            try:
+                # 执行任务规划
+                result = await client.call_tool(tool_name, task["config"])
+                
+                if result["success"]:
+                    print(f"✅ 任务 {task['task_id']} 规划成功")
+                    
+                    # 路径优化
+                    if "waypoints" in result["data"]:
+                        optimize_result = await client.call_tool(
+                            "optimize_route",
+                            {
+                                "waypoints": result["data"]["waypoints"],
+                                "optimization_method": "two_opt",
+                                "optimization_objective": "minimize_time"
+                            }
+                        )
+                        
+                        if optimize_result["success"]:
+                            result["data"] = optimize_result["data"]
+                            print(f"   🔧 路径优化完成")
+                    
+                    # 生成KMZ文件
+                    kmz_result = await client.call_tool(
+                        "generate_kmz",
+                        {
+                            "flight_plan": result["data"],
+                            "output_filename": f"{task['task_id']}.kmz",
+                            "include_template": True,
+                            "author": "批量处理系统"
+                        }
+                    )
+                    
+                    if kmz_result["success"]:
+                        print(f"   📁 KMZ文件: {kmz_result['data']['file_path']}")
+                    
+                    # 保存结果
+                    batch_results.append({
+                        "task_id": task["task_id"],
+                        "status": "success",
+                        "data": result["data"],
+                        "kmz_file": kmz_result["data"]["file_path"] if kmz_result["success"] else None
+                    })
+                    
+                else:
+                    print(f"❌ 任务 {task['task_id']} 规划失败: {result['message']}")
+                    batch_results.append({
+                        "task_id": task["task_id"],
+                        "status": "failed",
+                        "error": result["message"]
+                    })
+                    
+            except Exception as e:
+                print(f"💥 任务 {task['task_id']} 执行出错: {e}")
+                batch_results.append({
+                    "task_id": task["task_id"],
+                    "status": "error",
+                    "error": str(e)
+                })
+        
+        # 生成批量处理报告
+        print(f"\n📊 批量处理完成，生成报告...")
+        
+        success_count = sum(1 for r in batch_results if r["status"] == "success")
+        failed_count = len(batch_results) - success_count
+        
+        report = {
+            "batch_summary": {
+                "total_tasks": len(batch_tasks),
+                "success_count": success_count,
+                "failed_count": failed_count,
+                "success_rate": f"{success_count/len(batch_tasks)*100:.1f}%"
+            },
+            "task_results": batch_results,
+            "generated_files": [r.get("kmz_file") for r in batch_results if r.get("kmz_file")],
+            "processing_time": "2024-07-20 10:30:00"
+        }
+        
+        # 保存报告
+        report_file = Path("output/batch_processing_report.json")
+        report_file.parent.mkdir(exist_ok=True)
+        
+        with open(report_file, 'w', encoding='utf-8') as f:
+            json.dump(report, f, ensure_ascii=False, indent=2)
+        
+        print(f"✅ 批量处理报告已保存: {report_file}")
+        print(f"📈 处理统计:")
+        print(f"   - 总任务数: {report['batch_summary']['total_tasks']}")
+        print(f"   - 成功任务: {report['batch_summary']['success_count']}")
+        print(f"   - 失败任务: {report['batch_summary']['failed_count']}")
+        print(f"   - 成功率: {report['batch_summary']['success_rate']}")
+        print(f"   - 生成文件: {len(report['generated_files'])}个")
+        
+    except Exception as e:
+        print(f"💥 批量处理出错: {e}")
+
+# 运行示例
+if __name__ == "__main__":
+    asyncio.run(batch_processing_example())</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- 系统集成示例 -->
+                    <section id="integration" class="example-section">
+                        <h2>8. 系统集成示例</h2>
+                        <div class="example-description">
+                            <p>演示如何将MCP服务集成到现有的无人机管理系统中。</p>
+                        </div>
+
+                        <h3>Flask Web应用集成</h3>
+                        <div class="code-block">
+                            <pre><code>from flask import Flask, request, jsonify
+import asyncio
+from mcp_client import MCPClient
+
+app = Flask(__name__)
+
+class DroneFlightPlannerAPI:
+    """无人机航线规划API封装"""
+    
+    def __init__(self):
+        self.mcp_client = MCPClient("dji-waypoint-mcp")
+    
+    async def create_mission(self, mission_type, config):
+        """创建飞行任务"""
+        tool_mapping = {
+            "waypoint": "plan_waypoint_mission",
+            "mapping": "plan_mapping_mission",
+            "oblique": "plan_oblique_mission",
+            "strip": "plan_strip_mission"
+        }
+        
+        tool_name = tool_mapping.get(mission_type)
+        if not tool_name:
+            return {"error": f"不支持的任务类型: {mission_type}"}
+        
+        try:
+            result = await self.mcp_client.call_tool(tool_name, config)
+            return result
+        except Exception as e:
+            return {"error": str(e)}
+    
+    async def optimize_mission(self, waypoints, method="two_opt"):
+        """优化飞行路径"""
+        try:
+            result = await self.mcp_client.call_tool(
+                "optimize_route",
+                {
+                    "waypoints": waypoints,
+                    "optimization_method": method,
+                    "optimization_objective": "minimize_distance"
+                }
+            )
+            return result
+        except Exception as e:
+            return {"error": str(e)}
+    
+    async def generate_flight_file(self, flight_plan, filename):
+        """生成飞行文件"""
+        try:
+            result = await self.mcp_client.call_tool(
+                "generate_kmz",
+                {
+                    "flight_plan": flight_plan,
+                    "output_filename": filename,
+                    "include_template": True
+                }
+            )
+            return result
+        except Exception as e:
+            return {"error": str(e)}
+
+# 创建API实例
+flight_planner = DroneFlightPlannerAPI()
+
+@app.route('/api/missions', methods=['POST'])
+def create_mission():
+    """创建飞行任务API"""
+    data = request.json
+    
+    mission_type = data.get('type')
+    config = data.get('config')
+    
+    if not mission_type or not config:
+        return jsonify({"error": "缺少必要参数"}), 400
+    
+    # 异步调用MCP服务
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
+    try:
+        result = loop.run_until_complete(
+            flight_planner.create_mission(mission_type, config)
+        )
+        
+        if "error" in result:
+            return jsonify(result), 500
+        
+        return jsonify(result)
+        
+    finally:
+        loop.close()
+
+@app.route('/api/missions/<mission_id>/optimize', methods=['POST'])
+def optimize_mission(mission_id):
+    """优化飞行路径API"""
+    data = request.json
+    waypoints = data.get('waypoints')
+    method = data.get('method', 'two_opt')
+    
+    if not waypoints:
+        return jsonify({"error": "缺少航点数据"}), 400
+    
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
+    try:
+        result = loop.run_until_complete(
+            flight_planner.optimize_mission(waypoints, method)
+        )
+        
+        if "error" in result:
+            return jsonify(result), 500
+        
+        return jsonify(result)
+        
+    finally:
+        loop.close()
+
+@app.route('/api/missions/<mission_id>/download', methods=['POST'])
+def download_mission_file(mission_id):
+    """下载飞行文件API"""
+    data = request.json
+    flight_plan = data.get('flight_plan')
+    
+    if not flight_plan:
+        return jsonify({"error": "缺少飞行计划数据"}), 400
+    
+    filename = f"mission_{mission_id}.kmz"
+    
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
+    try:
+        result = loop.run_until_complete(
+            flight_planner.generate_flight_file(flight_plan, filename)
+        )
+        
+        if "error" in result:
+            return jsonify(result), 500
+        
+        return jsonify({
+            "download_url": f"/downloads/{filename}",
+            "file_size": result["data"]["file_size"]
+        })
+        
+    finally:
+        loop.close()
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)</code></pre>
+                        </div>
+
+                        <h3>前端JavaScript集成</h3>
+                        <div class="code-block">
+                            <pre><code>class DroneFlightPlannerClient {
+    constructor(baseUrl = 'http://localhost:5000/api') {
+        this.baseUrl = baseUrl;
+    }
+    
+    async createMission(type, config) {
+        const response = await fetch(`${this.baseUrl}/missions`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ type, config })
+        });
+        
+        return await response.json();
+    }
+    
+    async optimizeMission(missionId, waypoints, method = 'two_opt') {
+        const response = await fetch(`${this.baseUrl}/missions/${missionId}/optimize`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ waypoints, method })
+        });
+        
+        return await response.json();
+    }
+    
+    async downloadMissionFile(missionId, flightPlan) {
+        const response = await fetch(`${this.baseUrl}/missions/${missionId}/download`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ flight_plan: flightPlan })
+        });
+        
+        return await response.json();
+    }
+}
+
+// 使用示例
+const client = new DroneFlightPlannerClient();
+
+async function createMappingMission() {
+    const config = {
+        survey_area: {
+            type: "rectangle",
+            coordinates: [[116.4074, 39.9042], [116.4174, 39.9142]]
+        },
+        mapping_params: {
+            altitude: 120.0,
+            overlap_rate: { front: 0.8, side: 0.7 }
+        },
+        aircraft_type: "M30"
+    };
+    
+    try {
+        const result = await client.createMission('mapping', config);
+        console.log('任务创建成功:', result);
+        
+        if (result.success) {
+            // 优化路径
+            const optimized = await client.optimizeMission(
+                'mission_001', 
+                result.data.waypoints
+            );
+            console.log('路径优化完成:', optimized);
+            
+            // 下载文件
+            const download = await client.downloadMissionFile(
+                'mission_001',
+                optimized.data
+            );
+            console.log('文件下载链接:', download.download_url);
+        }
+        
+    } catch (error) {
+        console.error('操作失败:', error);
+    }
+}</code></pre>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>大疆航线规划MCP</h3>
+                    <p>专业的无人机航线规划解决方案</p>
+                </div>
+                <div class="footer-section">
+                    <h4>示例代码</h4>
+                    <ul>
+                        <li><a href="#basic-waypoint">基础航点飞行</a></li>
+                        <li><a href="#mapping-survey">建图测绘</a></li>
+                        <li><a href="#oblique-photography">倾斜摄影</a></li>
+                        <li><a href="#batch-processing">批量处理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 大疆航线规划MCP服务. 采用 MIT 许可证.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
