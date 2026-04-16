@@ -1,4 +1,4 @@
-# 🚁 UAVCDS: 无人机综合指挥调度系统 (UAV Comprehensive Command and Dispatch System)
+# UAVCDS: 无人机综合指挥调度系统 (UAV Comprehensive Command and Dispatch System)
 
 [![Status](https://img.shields.io/badge/Status-Ongoing_Updates-brightgreen)]()
 [![Python](https://img.shields.io/badge/Python-3.9+-blue)]()
