@@ -1,7 +1,7 @@
 {
   "system_name": "UAV Comprehensive Command and Dispatch System",
   "api_keys": { 
-    "dashscope": "api-key" 
+    "dashscope": "sk-8729b18340b84faa97760edd5ad2f0d2" 
   }, 
   "models": { 
     "embedding": "text-embedding-v4", 
@@ -21,9 +21,9 @@
     "theme": "dark"
   },
   "dji":{
-    "url": "大疆司空2登录后网站",
-    "account": "",
-    "password": ""
+    "url": "https://fh.dji.com/organization/581c7655-9f9f-4c39-b7e1-24fb2c6514af/project/62afcdef-6f0a-4b3d-93db-7591ee840680#/team",
+    "account": "13341349001",
+    "password": "azuna@710"
   },
   "flight_settings": {
     "default_altitude": 100.0
