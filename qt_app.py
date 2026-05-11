@@ -23,8 +23,8 @@ COLOR_APPLE_BLUE = "#0071e3"
 COLOR_DARK_SURFACE = "#272729"
 COLOR_WHITE = "#ffffff"
 
-FONT_DISPLAY = "SF Pro Display, Helvetica Neue, Helvetica, Arial, sans-serif"
-FONT_TEXT = "SF Pro Text, Helvetica Neue, Helvetica, Arial, sans-serif"
+FONT_DISPLAY = "Helvetica Neue"
+FONT_TEXT = "Helvetica Neue"
 
 # --- Stylesheet ---
 QSS_STYLE = f"""
@@ -116,11 +116,16 @@ class MessageWidget(QWidget):
         super().__init__()
         layout = QHBoxLayout(self)
         layout.setContentsMargins(20, 5, 20, 5)
+        self._max_bubble_width = 800
+        self._min_bubble_height = 70
         
         if is_user:
             self.bubble = QLabel(text)
             self.bubble.setWordWrap(True)
+            self.bubble.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
             self.bubble.setObjectName("messageBubble_user")
+            self.bubble.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum)
+            self.bubble.setMinimumHeight(self._min_bubble_height)
             layout.addStretch()
             layout.addWidget(self.bubble)
         else:
@@ -133,6 +138,8 @@ class MessageWidget(QWidget):
             self.bubble.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
             self.bubble.setObjectName("messageBubble_assistant")
             self.bubble.setFrameShape(QFrame.Shape.NoFrame)
+            self.bubble.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
+            self.bubble.setMinimumHeight(self._min_bubble_height)
             
             # Adjust height based on content
             self.bubble.document().contentsChanged.connect(self.adjust_height)
@@ -140,15 +147,35 @@ class MessageWidget(QWidget):
             layout.addWidget(self.bubble)
             layout.addStretch()
             
-        # 限制最大宽度
-        self.bubble.setFixedWidth(600)
+        self.bubble.setMaximumWidth(self._max_bubble_width)
+        QTimer.singleShot(0, self.adjust_height)
+
+    def set_text(self, text: str):
+        if isinstance(self.bubble, QLabel):
+            self.bubble.setText(text)
+            self.bubble.adjustSize()
+            self.bubble.setMinimumHeight(self._min_bubble_height)
+        else:
+            self.bubble.setHtml((text or "").replace('\n', '<br>'))
+            QTimer.singleShot(0, self.adjust_height)
 
     def adjust_height(self):
+        if not isinstance(self.bubble, QTextBrowser):
+            return
+        self.bubble.document().setTextWidth(self.bubble.viewport().width())
         doc_height = self.bubble.document().size().height()
-        self.bubble.setFixedHeight(int(doc_height) + 10)
+        height = int(doc_height) + 24
+        height = max(height, self._min_bubble_height)
+        self.bubble.setMinimumHeight(height)
+        self.bubble.setMaximumHeight(height)
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        QTimer.singleShot(0, self.adjust_height)
 
 class AgentWorker(QThread):
     finished = pyqtSignal(str)
+    partial = pyqtSignal(str)
     error = pyqtSignal(str)
     
     def __init__(self, agent, instruction):
@@ -158,9 +185,11 @@ class AgentWorker(QThread):
         
     def run(self):
         try:
-            # OrchestratorAgent.process_instruction 是同步调用的（内部使用了 _run_async）
-            response = self.agent.process_instruction(self.instruction)
-            self.finished.emit(response)
+            rendered = ""
+            for chunk in self.agent.process_instruction_stream(self.instruction):
+                rendered += chunk
+                self.partial.emit(rendered)
+            self.finished.emit(rendered)
         except Exception as e:
             self.error.emit(str(e))
 
@@ -237,7 +266,7 @@ class UAVAssistantApp(QMainWindow):
         main_layout.addWidget(input_widget)
         
         # Add a welcome message
-        self.add_message("您好！我是 UAV 综合指挥调度助手。请告诉我您的指令。", is_user=False)
+        self.add_message("您好！我是综合指挥调度助手，请告诉我您的指令。", is_user=False)
 
     def add_message(self, text, is_user=True):
         # Remove the stretch at the end
@@ -278,9 +307,15 @@ class UAVAssistantApp(QMainWindow):
         
         # Start background worker
         self.worker = AgentWorker(self.agent, text)
+        self.worker.partial.connect(self.handle_stream_update)
         self.worker.finished.connect(self.handle_response)
         self.worker.error.connect(self.handle_error)
         self.worker.start()
+
+    def handle_stream_update(self, rendered: str):
+        if hasattr(self, "thinking_msg") and self.thinking_msg is not None:
+            self.thinking_msg.set_text(rendered)
+            self.scroll_to_bottom()
 
     def handle_response(self, response):
         # Remove thinking message

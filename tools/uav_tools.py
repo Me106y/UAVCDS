@@ -178,10 +178,6 @@ def check_airspace_conflict(route: str) -> bool:
     参数:
     route: 规划好的航线数据序列化字符串
     """
-    logger.info("Planning Tool 正在调用 airspace-monitor-mcp 检查航线冲突...")
-    args = {"route": route}
-    result = _run_async(mcp_manager.call_tool("airspace-monitor-mcp", "check_route_conflict", args))
-    # 假设返回值中包含 'has_conflict' 字段
-    if isinstance(result, dict):
-        return result.get("has_conflict", False)
+    # 暂时禁用 airspace-monitor-mcp 调用
+    logger.info("Planning Tool: 空域冲突检查功能已暂时禁用（airspace-monitor-mcp 未配置）")
     return False

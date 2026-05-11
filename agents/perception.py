@@ -1,4 +1,5 @@
 from utils.logger import logger
+from tools.uav_tools import fetch_dashboard_status, get_coordinates
 
 class PerceptionAgent:
     """
@@ -15,8 +16,11 @@ class PerceptionAgent:
         Action: fetch_dashboard
         """
         logger.info("Perception Agent 正在获取大疆司空2仪表盘状态...")
-        # TODO: 通过 playwright-mcp-server 获取网页数据，利用VLM识别画面提取结构化数据
-        return {
-            "drone_a": {"status": "working", "remaining_time": 20, "battery": 45},
-            "drone_b": {"status": "idle", "battery": 98}
-        }
+        url = (self.mcp_settings or {}).get("dji", {}).get("url", "")
+        if not url:
+            return {"error": "未配置 dji.url，无法读取司空2仪表盘"}
+        return fetch_dashboard_status.invoke({"url": url})
+
+    def get_coordinates(self, target_name: str) -> dict:
+        logger.info(f"Perception Agent 正在获取地点 POI/AOI: {target_name}")
+        return get_coordinates.invoke({"target_name": target_name})

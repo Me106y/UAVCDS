@@ -50,9 +50,11 @@ if prompt := st.chat_input("请输入调度指令"):
     with st.chat_message("assistant"):
         with st.spinner("调度指挥官正在思考中，并与各个 MCP 服务交互..."):
             agent = get_orchestrator()
-            # 调用 Agent 的 ReAct 循环，这会真实触发 tools 中的 mcp_client
-            final_response = agent.process_instruction(prompt)
-            
-            st.markdown(final_response)
+            placeholder = st.empty()
+            rendered = ""
+            for chunk in agent.process_instruction_stream(prompt):
+                rendered += chunk
+                placeholder.markdown(rendered)
+            final_response = rendered
         
     st.session_state.messages.append({"role": "assistant", "content": final_response})

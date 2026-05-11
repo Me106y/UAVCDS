@@ -1,15 +1,15 @@
 {
   "system_name": "UAV Comprehensive Command and Dispatch System",
   "api_keys": { 
-    "dashscope": "sk-8729b18340b84faa97760edd5ad2f0d2" 
+    "dashscope": "sk-cagybl81pml5k051we5zhxv8bkgk0ss5w725utky7u5h5e9l"
   }, 
   "models": { 
     "embedding": "text-embedding-v4", 
-    "chat": "qwen-max", 
+    "chat": "mimo-v2.5-pro",
     "default_profile": "professional", 
     "chat_profiles": { 
-      "professional": "qwen-max", 
-      "fast": "qwen-plus" 
+      "professional": "mimo-v2.5-pro",
+      "fast": "mimo-v2.5-pro"
     } 
   },
   "agent_settings": {
@@ -26,6 +26,6 @@
     "password": "azuna@710"
   },
   "flight_settings": {
-    "default_altitude": 100.0
+    "default_altitude": 120.0
   }
 }

@@ -1,4 +1,4 @@
-# UAVCDS: 无人机综合指挥调度系统 (UAV Comprehensive Command and Dispatch System)
+# 🚁 UAVCDS: 无人机综合指挥调度系统 (UAV Comprehensive Command and Dispatch System)
 
 [![Status](https://img.shields.io/badge/Status-Ongoing_Updates-brightgreen)]()
 [![Python](https://img.shields.io/badge/Python-3.9+-blue)]()
@@ -17,10 +17,11 @@ UAVCDS 是一个基于 **Multi-Agent (多智能体) 架构** 的无人机指挥�
 
 ### 🗺️ 地图与 POI 感知 (AMAP MCP)
 集成 `amap-maps-mcp-server`：
-- 支持通过自然语言搜索地点。
+- 支持通过自然语言搜索地点（如“杭州电子科技大学下沙校区”）。
+- 自动获取中心点坐标 (POI) 并智能生成周边巡视区域 (AOI)。
 
 ### ✈️ 航迹规划与 DJI 兼容性 (DJI MCP)
-集成 `dji-waypoint-mcp` 服务：
+集成自定义的 `dji-waypoint-mcp` 服务：
 - **自动化规划**：根据 AOI 坐标自动规划无人机巡航航迹。
 - **KMZ 深度修复**：
   - **痛点解决**：修复了标准生成工具中文件位于根目录导致大疆司空 2、大疆智图或 Pilot 2 格式校验失败的问题。
@@ -31,15 +32,10 @@ UAVCDS 是一个基于 **Multi-Agent (多智能体) 架构** 的无人机指挥�
 
 ## 📸 系统截图
 
+> *此处预留系统运行截图区域*
 > 
-> <img width="2400" height="1494" alt="image" src="https://github.com/user-attachments/assets/1d301c52-520d-485b-8082-feb8c993b9fd" />
-> <img width="2880" height="1626" alt="image" src="https://github.com/user-attachments/assets/c95971cf-4f94-4c04-ab10-e168caf0b7e4" />
-> <img width="2880" height="1626" alt="image" src="https://github.com/user-attachments/assets/a0b7ea76-17c1-4654-bff6-b563ee0bdf72" />
-> <img width="430" height="424" alt="image" src="https://github.com/user-attachments/assets/54480732-e816-4c14-b06e-8790a1ad5222" />
-
-
-
-
+> ![Dashboard Placeholder](https://via.placeholder.com/800x450?text=UAVCDS+Command+Center+Dashboard)
+> *图 1: 指挥官智能体正在处理调度指令*
 
 ---
 

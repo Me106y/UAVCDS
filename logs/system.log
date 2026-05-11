@@ -746,3 +746,1263 @@ KMZ 文件已生成并命名为 `mission.kmz`。您可以使用此文件在大�
 如果您需要进一步的帮助或有其他要求，请告诉我。
 2026-04-15 17:49:18,274 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
 2026-04-15 17:53:03,884 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-16 15:03:58,095 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-16 15:06:58,201 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-16 15:07:26,888 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-16 15:08:01,541 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-16 15:10:47,749 - UAV_System - INFO - 收到用户指令: 我想对杭州电子科技大学下沙校区进行车速检测，请生成一条航迹并生成其kmz文件
+2026-04-16 15:10:48,107 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-04-16 15:10:48,110 - UAV_System - INFO - Orchestrator 接收到指令: 我想对杭州电子科技大学下沙校区进行车速检测，请生成一条航迹并生成其kmz文件
+2026-04-16 15:13:05,310 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-16 15:13:09,657 - UAV_System - INFO - 收到用户指令: 我想对杭州电子科技大学下沙校区进行车速检测，请生成一条航迹并生成其kmz文件
+2026-04-16 15:13:09,904 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-04-16 15:13:09,905 - UAV_System - INFO - Orchestrator 接收到指令: 我想对杭州电子科技大学下沙校区进行车速检测，请生成一条航迹并生成其kmz文件
+2026-04-16 15:13:12,860 - UAV_System - INFO - [模型思考] 决定调用工具: get_coordinates, 参数: {'target_name': '杭州电子科技大学下沙校区'}
+2026-04-16 15:13:12,863 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-04-16 15:13:12,864 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-04-16 15:13:15,772 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-04-16 15:13:15,773 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-04-16 15:13:16,393 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-04-16 15:13:16,394 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-04-16 15:13:16,394 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]
+2026-04-16 15:13:16,399 - UAV_System - INFO - [工具返回] get_coordinates 的结果: {"target": "杭州电子科技大学下沙校区", "poi": {"latitude": 30.315022, "longitude": 120.339116}, "aoi_waypoints": [{"latitude": 30.315521999999998, "longitude": 120.338616, "altitude": 100.0}, {"latitude": 30.315521999999998, "longitude": 120.339616, "altitude": 100.0}, {"latitude": 30.314522, "longitude": 120.339616, "altitude": 100.0}, {"latitude": 30.314522, "longitude": 120.338616, "altitude": 100.0}]}
+2026-04-16 15:13:26,119 - UAV_System - INFO - [模型思考] 决定调用工具: generate_flight_plan, 参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-04-16 15:13:26,122 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-04-16 15:13:26,123 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-04-16 15:13:26,952 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-04-16 15:13:26,952 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-04-16 15:13:26,960 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-04-16 15:13:26,961 - UAV_System - INFO - [工具返回] generate_flight_plan 的结果: {"success": true, "message": "Waypoint mission planned successfully with 4 waypoints", "data": {"flight_path": {"waypoint_count": 4, "total_distance": 303.18, "estimated_flight_time": 60.6, "bounding_box": {"min_latitude": 30.314522, "max_latitude": 30.315521999999998, "min_longitude": 120.338616, "max_longitude": 120.339616}}, "configuration": {"aircraft_type": "M30", "flight_speed": 5.0, "height_mode": "EGM96", "heading_mode": "followWayline", "turn_mode": "toPointAndStopWithDiscontinuityCurvature"}, "safety_validation": {"is_valid": true, "warnings": [], "errors": []}, "statistics": {"total_distance": 303.18, "estimated_flight_time": 60.6, "waypoint_count": 4, "min_altitude": 100.0, "max_altitude": 100.0, "avg_altitude": 100.0, "action_count": 0}}, "error": null}
+2026-04-16 15:13:42,553 - UAV_System - INFO - [模型思考] 决定调用工具: generate_kmz_file, 参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'output_filename': 'mission.kmz'}
+2026-04-16 15:13:42,558 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-04-16 15:13:42,559 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-04-16 15:13:42,597 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1810, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-04-16 15:13:42'}, 'error': None}
+2026-04-16 15:13:42,598 - UAV_System - INFO - [工具返回] generate_kmz_file 的结果: {"success": true, "message": "KMZ file generated successfully: mission.kmz", "data": {"output_path": "/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz", "output_filename": "mission.kmz", "file_size": "1.8 KB", "file_size_bytes": 1810, "waypoint_count": 4, "includes_template": true, "includes_resources": false, "generation_time": "2026-04-16 15:13:42"}, "error": null}
+2026-04-16 15:14:04,561 - UAV_System - INFO - [模型输出] 已经成功为杭州电子科技大学下沙校区生成了一条航迹，并创建了对应的 KMZ 文件。以下是操作的总结：
+
+1. 获取到了目标地点“杭州电子科技大学下沙校区”的中心点坐标 (POI) 和周边矩形巡视区域坐标 (AOI)。
+2. 根据 AOI 的四个角坐标，规划了一个包含 4 个航点的飞行任务。该航线总距离约为 303.18 米，预计飞行时间大约 60.6 秒。
+3. 使用相同的航点列表生成了名为 `mission.kmz` 的文件，这个文件可以导入到大疆司空2系统中使用。
+
+KMZ 文件已准备好，您可以下载并将其导入到您的无人机控制系统中以执行飞行任务。如果您需要进一步的帮助或有其他要求，请告诉我。
+2026-04-17 12:09:05,269 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-17 12:10:00,803 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-17 12:10:01,476 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-04-17 12:11:09,040 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-17 12:11:09,589 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-04-17 12:14:30,522 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-17 12:14:31,050 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-04-17 12:15:27,049 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-17 12:15:27,525 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-04-17 12:15:59,217 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-04-17 12:15:59,584 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-04-17 12:17:57,698 - UAV_System - INFO - Orchestrator 接收到指令: 我想对杭州电子科技大学下沙校区进行车速检测，请生成一条航迹并生成其对应的kmz文件
+2026-04-17 12:17:59,458 - UAV_System - INFO - [模型思考] 决定调用工具: get_coordinates, 参数: {'target_name': '杭州电子科技大学下沙校区'}
+2026-04-17 12:17:59,460 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-04-17 12:17:59,462 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-04-17 12:18:01,354 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-04-17 12:18:01,354 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-04-17 12:18:01,568 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-04-17 12:18:01,569 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-04-17 12:18:01,569 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]
+2026-04-17 12:18:01,572 - UAV_System - INFO - [工具返回] get_coordinates 的结果: {"target": "杭州电子科技大学下沙校区", "poi": {"latitude": 30.315022, "longitude": 120.339116}, "aoi_waypoints": [{"latitude": 30.315521999999998, "longitude": 120.338616, "altitude": 100.0}, {"latitude": 30.315521999999998, "longitude": 120.339616, "altitude": 100.0}, {"latitude": 30.314522, "longitude": 120.339616, "altitude": 100.0}, {"latitude": 30.314522, "longitude": 120.338616, "altitude": 100.0}]}
+2026-04-17 12:18:15,725 - UAV_System - INFO - [模型思考] 决定调用工具: generate_flight_plan, 参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-04-17 12:18:15,729 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-04-17 12:18:15,730 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-04-17 12:18:16,631 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-04-17 12:18:16,632 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-04-17 12:18:16,651 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-04-17 12:18:16,652 - UAV_System - INFO - [工具返回] generate_flight_plan 的结果: {"success": true, "message": "Waypoint mission planned successfully with 4 waypoints", "data": {"flight_path": {"waypoint_count": 4, "total_distance": 303.18, "estimated_flight_time": 60.6, "bounding_box": {"min_latitude": 30.314522, "max_latitude": 30.315521999999998, "min_longitude": 120.338616, "max_longitude": 120.339616}}, "configuration": {"aircraft_type": "M30", "flight_speed": 5.0, "height_mode": "EGM96", "heading_mode": "followWayline", "turn_mode": "toPointAndStopWithDiscontinuityCurvature"}, "safety_validation": {"is_valid": true, "warnings": [], "errors": []}, "statistics": {"total_distance": 303.18, "estimated_flight_time": 60.6, "waypoint_count": 4, "min_altitude": 100.0, "max_altitude": 100.0, "avg_altitude": 100.0, "action_count": 0}}, "error": null}
+2026-04-17 12:18:25,240 - UAV_System - INFO - [模型思考] 决定调用工具: generate_kmz_file, 参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'output_filename': 'mission.kmz'}
+2026-04-17 12:18:25,242 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-04-17 12:18:25,242 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-04-17 12:18:25,251 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1812, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-04-17 12:18:25'}, 'error': None}
+2026-04-17 12:18:25,252 - UAV_System - INFO - [工具返回] generate_kmz_file 的结果: {"success": true, "message": "KMZ file generated successfully: mission.kmz", "data": {"output_path": "/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz", "output_filename": "mission.kmz", "file_size": "1.8 KB", "file_size_bytes": 1812, "waypoint_count": 4, "includes_template": true, "includes_resources": false, "generation_time": "2026-04-17 12:18:25"}, "error": null}
+2026-04-17 12:18:42,390 - UAV_System - INFO - [模型输出] 已经成功为杭州电子科技大学下沙校区生成了一条航迹，并创建了对应的 KMZ 文件。以下是操作的总结：
+
+1. 获取到了目标地点“杭州电子科技大学下沙校区”的中心点坐标 (POI) 和周边矩形巡视区域坐标 (AOI)。
+2. 根据 AOI 的四个角坐标，规划了一个包含 4 个航点的飞行任务。预计总飞行距离为 303.18 米，估计飞行时间为 60.6 秒。
+3. 使用相同的航点列表生成了名为 `mission.kmz` 的 KMZ 文件，该文件可以导入到大疆司空2系统中使用。
+
+您可以下载这个 [mission.kmz](/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz) 文件并将其上传至您的无人机控制系统以执行飞行任务。请确保在实际飞行前检查所有安全事项和当地法规。如果您需要进一步的帮助或有其他要求，请告诉我。
+2026-05-07 12:20:54,335 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 12:21:04,769 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 12:21:05,242 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:03:02,031 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 16:03:02,259 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:03:02,259 - UAV_System - INFO - Orchestrator 接收到指令: 杭州电子科技大学下沙校区坐标是多少？
+2026-05-07 16:03:02,627 - UAV_System - ERROR - Agent 执行出错: Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-b399f3b5-0363-9b92-b035-7de121c7b920', 'request_id': 'b399f3b5-0363-9b92-b035-7de121c7b920'}
+2026-05-07 16:03:02,627 - UAV_System - INFO - Orchestrator 接收到指令: 用刚才的地点生成kmz，文件名叫 demo.mission.kmz
+2026-05-07 16:03:02,789 - UAV_System - ERROR - Agent 执行出错: Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-17b6f0be-cbe5-987f-94b3-e094e7b863f1', 'request_id': '17b6f0be-cbe5-987f-94b3-e094e7b863f1'}
+2026-05-07 16:09:54,995 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 16:09:55,002 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 16:09:55,002 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 16:09:55,268 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:11:55,831 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 16:11:56,097 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 16:11:56,098 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 16:11:56,262 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:14:20,113 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件
+2026-05-07 16:14:20,425 - UAV_System - ERROR - Agent 执行出错: Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-2444064a-0c74-93fb-8297-d120de0074d8', 'request_id': '2444064a-0c74-93fb-8297-d120de0074d8'}
+2026-05-07 16:18:04,501 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 16:18:04,734 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 16:18:04,734 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 16:18:04,898 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:18:08,040 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件
+2026-05-07 16:18:08,387 - UAV_System - ERROR - Agent 执行出错: Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-ac193237-94f1-9c2e-abee-1cbbec2d073c', 'request_id': 'ac193237-94f1-9c2e-abee-1cbbec2d073c'}
+2026-05-07 16:18:10,835 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件
+2026-05-07 16:18:10,973 - UAV_System - ERROR - Agent 执行出错: Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-50ee0843-903b-91e5-a64f-282eb2edc13d', 'request_id': '50ee0843-903b-91e5-a64f-282eb2edc13d'}
+2026-05-07 16:19:17,692 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 16:19:17,697 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 16:19:17,697 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 16:19:17,904 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:19:17,904 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件
+2026-05-07 16:19:18,254 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-d8cb6db4-34ef-943e-a7a4-b2e576af8b83', 'request_id': 'd8cb6db4-34ef-943e-a7a4-b2e576af8b83'}
+2026-05-07 16:19:18,256 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 16:19:18,259 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 16:19:18,260 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 16:19:20,612 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 16:19:20,612 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 16:19:20,873 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 16:19:20,874 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 16:19:20,874 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]
+2026-05-07 16:19:20,874 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 16:19:20,876 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 16:19:20,877 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 16:19:22,108 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 16:19:22,109 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-05-07 16:19:22,127 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 16:19:22,128 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 16:19:22,129 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 16:19:22,130 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 16:19:22,138 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1811, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 16:19:22'}, 'error': None}
+2026-05-07 16:38:11,397 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 16:38:11,664 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 16:38:11,664 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 16:38:11,821 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:38:52,657 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 16:38:52,999 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'be76a30e-7a14-96fe-874f-fa4f3e21ff36'}
+2026-05-07 16:38:53,001 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 16:38:53,003 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 16:38:53,005 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 16:38:56,034 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 16:38:56,034 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 16:38:56,253 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 16:38:56,254 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 16:38:56,254 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]
+2026-05-07 16:38:56,255 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 16:38:56,258 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 16:38:56,258 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 16:38:57,136 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 16:38:57,136 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-05-07 16:38:57,143 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 16:38:57,144 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 16:38:57,144 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 16:38:57,145 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 16:38:57,151 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1810, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 16:38:57'}, 'error': None}
+2026-05-07 16:50:09,168 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 16:50:09,175 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 16:50:09,176 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 16:50:09,406 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:50:09,406 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件
+2026-05-07 16:50:09,676 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '26a273e1-d68a-9a84-b1a3-abb1ec3c0bc4'}
+2026-05-07 16:50:09,678 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 16:50:09,679 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 16:50:09,681 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 16:50:11,735 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 16:50:11,735 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 16:50:11,950 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 16:50:11,950 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 16:50:11,950 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]
+2026-05-07 16:50:11,951 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 16:50:11,953 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 16:50:11,954 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 16:50:12,628 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 16:50:12,628 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-05-07 16:50:12,636 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 16:50:12,636 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 16:50:12,637 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 16:50:12,637 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 16:50:12,644 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1811, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 16:50:12'}, 'error': None}
+2026-05-07 16:51:30,742 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 16:51:30,978 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 16:51:30,978 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 16:51:31,136 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 16:51:56,674 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件
+2026-05-07 16:51:57,052 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '2960c74a-7bcf-9fdb-86f9-c394d44bf98a'}
+2026-05-07 16:51:57,053 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 16:51:57,055 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 16:51:57,056 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 16:52:00,290 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 16:52:00,290 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 16:52:00,491 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 16:52:00,492 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 16:52:00,492 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]
+2026-05-07 16:52:00,492 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 16:52:00,494 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 16:52:00,494 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 16:52:01,184 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 16:52:01,184 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-05-07 16:52:01,191 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 16:52:01,192 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 16:52:01,193 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 16:52:01,193 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 16:52:01,199 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1810, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 16:52:01'}, 'error': None}
+2026-05-07 17:56:16,460 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 17:56:16,662 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 17:56:16,662 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 17:56:16,662 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 17:56:16,662 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件，文件名叫 hangzhou_speed.mission.kmz
+2026-05-07 17:56:16,851 - UAV_System - WARNING - PromptOptimizerAgent: LLM 优化失败，回退规则优化: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '5304a7f3-bc05-935d-8dd5-7ce9b2d0aa7f'}
+2026-05-07 17:56:16,852 - UAV_System - INFO - PromptOptimizer(rule) 输出: 任务地点：杭州电子科技大学下沙校区。 任务目标：执行车速检测巡航任务，生成一条闭合航迹覆盖目标区域。 执行步骤：先获取地点POI并生成AOI航点（含默认高度altitude），再规划航迹。 输出要求：生成可导入大疆司空2的KMZ(WPML)文件，并返回生成文件的绝对路径。 KMZ文件名：hangzhou_speed.mission.kmz。
+2026-05-07 17:56:16,896 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'ff9ffccd-af7f-97ab-bcc0-e2a94cd865a3'}
+2026-05-07 17:56:16,898 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 任务地点
+2026-05-07 17:56:16,899 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 任务地点
+2026-05-07 17:56:16,899 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 17:56:18,604 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 17:56:18,604 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '任务地点'}
+2026-05-07 17:56:18,755 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '江苏省', 'city': '连云港市', 'citycode': '0518', 'district': '灌云县', 'street': [], 'number': [], 'adcode': '320723', 'location': '119.250431,34.300020', 'level': '兴趣点'}, {'country': '中国', 'province': '甘肃省', 'city': '甘南藏族自治州', 'citycode': '0941', 'district': '舟曲县', 'street': [], 'number': [], 'adcode': '623023', 'location': '104.616041,33.311088', 'level': '村庄'}, {'country': '中国', 'province': '贵州省', 'city': '黔南布依族苗族自治州', 'citycode': '0854', 'district': '长顺县', 'street': [], 'number': [], 'adcode': '522729', 'location': '106.436748,25.938895', 'level': '村庄'}]}
+2026-05-07 17:56:18,756 - UAV_System - INFO - POI 获取成功: 任务地点 (latitude: 34.30002, longitude: 119.250431)
+2026-05-07 17:56:18,756 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 34.300520000000006, 'longitude': 119.249931, 'altitude': 100.0}, {'latitude': 34.300520000000006, 'longitude': 119.25093100000001, 'altitude': 100.0}, {'latitude': 34.29952, 'longitude': 119.25093100000001, 'altitude': 100.0}, {'latitude': 34.29952, 'longitude': 119.249931, 'altitude': 100.0}]
+2026-05-07 17:56:18,756 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 17:56:18,757 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 17:56:18,757 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 17:56:19,385 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 17:56:19,385 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 34.300520000000006, 'longitude': 119.249931, 'altitude': 100.0}, {'latitude': 34.300520000000006, 'longitude': 119.25093100000001, 'altitude': 100.0}, {'latitude': 34.29952, 'longitude': 119.25093100000001, 'altitude': 100.0}, {'latitude': 34.29952, 'longitude': 119.249931, 'altitude': 100.0}]}
+2026-05-07 17:56:19,394 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 294.91, 'estimated_flight_time': 59.0, 'bounding_box': {'min_latitude': 34.29952, 'max_latitude': 34.300520000000006, 'min_longitude': 119.249931, 'max_longitude': 119.25093100000001}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 294.91, 'estimated_flight_time': 59.0, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 17:56:19,394 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: hangzhou_speed.mission.kmz
+2026-05-07 17:56:19,395 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 17:56:19,395 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 34.300520000000006, 'longitude': 119.249931, 'altitude': 100.0}, {'latitude': 34.300520000000006, 'longitude': 119.25093100000001, 'altitude': 100.0}, {'latitude': 34.29952, 'longitude': 119.25093100000001, 'altitude': 100.0}, {'latitude': 34.29952, 'longitude': 119.249931, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'hangzhou_speed.mission.kmz'}
+2026-05-07 17:56:19,401 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: hangzhou_speed.mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/hangzhou_speed.mission.kmz', 'output_filename': 'hangzhou_speed.mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1826, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 17:56:19'}, 'error': None}
+2026-05-07 17:56:55,088 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 17:56:55,284 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 17:56:55,284 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 17:56:55,284 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 17:56:55,284 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件，文件名叫 hangzhou_speed.mission.kmz
+2026-05-07 17:56:55,460 - UAV_System - WARNING - PromptOptimizerAgent: LLM 优化失败，回退规则优化: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '7ab201c8-51a6-93f2-ad5b-9e0c877e571f'}
+2026-05-07 17:56:55,460 - UAV_System - INFO - PromptOptimizer(rule) 输出: 任务地点：杭州电子科技大学下沙校区。 任务目标：执行车速检测巡航任务，生成一条闭合航迹覆盖目标区域。 执行步骤：先获取地点POI并生成AOI航点（含默认高度altitude），再规划航迹。 输出要求：生成可导入大疆司空2的KMZ(WPML)文件，并返回生成文件的绝对路径。 KMZ文件名：hangzhou_speed.mission.kmz。
+2026-05-07 17:56:55,510 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '1fd19837-6a86-9d4e-b38a-ff68150e1eee'}
+2026-05-07 17:56:55,510 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 17:56:55,511 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 17:56:55,512 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 17:56:57,776 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 17:56:57,776 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 17:56:57,921 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 17:56:57,921 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 17:56:57,921 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]
+2026-05-07 17:56:57,922 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 17:56:57,924 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 17:56:57,925 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 17:56:58,934 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 17:56:58,939 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-05-07 17:56:58,956 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 17:56:58,957 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: hangzhou_speed.mission.kmz
+2026-05-07 17:56:58,968 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 17:56:58,969 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'hangzhou_speed.mission.kmz'}
+2026-05-07 17:56:58,975 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: hangzhou_speed.mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/hangzhou_speed.mission.kmz', 'output_filename': 'hangzhou_speed.mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1811, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 17:56:58'}, 'error': None}
+2026-05-07 18:18:34,964 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 18:18:35,176 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 18:18:35,176 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 18:18:35,176 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 18:18:35,176 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件，文件名叫 hangzhou_speed.mission.kmz
+2026-05-07 18:18:35,176 - UAV_System - INFO - PromptOptimizer 输入: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成对应的kmz文件，文件名叫 hangzhou_speed.mission.kmz
+2026-05-07 18:18:35,432 - UAV_System - WARNING - PromptOptimizerAgent: LLM 优化失败，回退规则优化: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '302daf52-e097-97bc-9afd-38f921a70279'}
+2026-05-07 18:18:35,433 - UAV_System - INFO - PromptOptimizer 输出(rule): 任务地点：杭州电子科技大学下沙校区。 任务目标：执行车速检测巡航任务，生成一条闭合航迹覆盖目标区域。 执行步骤：先获取地点POI并生成AOI航点（含默认高度altitude），再规划航迹。 输出要求：生成可导入大疆司空2的KMZ(WPML)文件，并返回生成文件的绝对路径。 KMZ文件名：hangzhou_speed.mission.kmz。
+2026-05-07 18:18:35,480 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'dac16d2b-20a5-9edd-b7b4-c51d366ab403'}
+2026-05-07 18:18:35,480 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 18:18:35,481 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 18:18:35,481 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 18:18:37,278 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 18:18:37,279 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 18:18:37,413 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 18:18:37,413 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 18:18:37,413 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]
+2026-05-07 18:18:37,414 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 18:18:37,415 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 18:18:37,416 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 18:18:38,008 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 18:18:38,009 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}]}
+2026-05-07 18:18:38,017 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 18:18:38,017 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: hangzhou_speed.mission.kmz
+2026-05-07 18:18:38,018 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 18:18:38,018 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 100.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 100.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'hangzhou_speed.mission.kmz'}
+2026-05-07 18:18:38,023 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: hangzhou_speed.mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/hangzhou_speed.mission.kmz', 'output_filename': 'hangzhou_speed.mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1811, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 18:18:38'}, 'error': None}
+2026-05-07 18:20:24,559 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 18:20:25,065 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 18:20:25,065 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 18:20:25,066 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 18:20:27,876 - UAV_System - INFO - Orchestrator 接收到指令: 2026-05-07 16:51:56,674 - UAV_System - INFO - Orchestrator 接收到指令:
+2026-05-07 18:20:27,877 - UAV_System - INFO - PromptOptimizer 输入: 2026-05-07 16:51:56,674 - UAV_System - INFO - Orchestrator 接收到指令:
+2026-05-07 18:20:28,076 - UAV_System - WARNING - PromptOptimizerAgent: LLM 优化失败，回退规则优化: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '93f66c97-5db6-98e8-9cb4-c36c508e45b1'}
+2026-05-07 18:20:28,076 - UAV_System - INFO - PromptOptimizer 输出(rule): 任务目标：执行车速检测巡航任务，生成一条闭合航迹覆盖目标区域。 执行步骤：先获取地点POI并生成AOI航点（含默认高度altitude），再规划航迹。
+2026-05-07 18:20:28,123 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '0c06d955-1cc4-9754-87ca-15753780d285'}
+2026-05-07 18:21:30,152 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 18:21:30,154 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 18:21:30,323 - UAV_System - WARNING - PromptOptimizerAgent: LLM 优化失败，回退规则优化: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'dca13338-e105-9db6-a721-6839bfc47da6'}
+2026-05-07 18:21:30,324 - UAV_System - INFO - PromptOptimizer 输出(rule): 任务地点：杭州电子科技大学。 任务目标：执行车速检测巡航任务，生成一条闭合航迹覆盖目标区域。 执行步骤：先获取地点POI并生成AOI航点（含默认高度altitude），再规划航迹。 输出要求：生成可导入大疆司空2的KMZ(WPML)文件，并返回生成文件的绝对路径。
+2026-05-07 18:21:30,383 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '3ec356c3-d764-999c-a7f8-c6c9fd3edd24'}
+2026-05-07 18:21:30,383 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学
+2026-05-07 18:21:30,392 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学
+2026-05-07 18:21:30,394 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 18:21:32,283 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 18:21:32,283 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学'}
+2026-05-07 18:21:32,413 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.379525,30.301471', 'level': '兴趣点'}]}
+2026-05-07 18:21:32,414 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学 (latitude: 30.301471, longitude: 120.379525)
+2026-05-07 18:21:32,414 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 100.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 100.0}]
+2026-05-07 18:21:32,414 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 18:21:32,415 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 18:21:32,415 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 18:21:33,203 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 18:21:33,203 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 100.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 100.0}]}
+2026-05-07 18:21:33,209 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.2, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.300971, 'max_latitude': 30.301970999999998, 'min_longitude': 120.379025, 'max_longitude': 120.380025}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.2, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 18:21:33,209 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 18:21:33,210 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 18:21:33,210 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 100.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 18:21:33,217 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 18:21:33'}, 'error': None}
+2026-05-07 18:22:19,357 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 18:22:19,769 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 18:22:19,769 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 18:22:19,770 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 18:22:23,282 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 18:22:23,283 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 18:22:23,500 - UAV_System - WARNING - PromptOptimizerAgent: LLM 优化失败，回退规则优化: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'db091dec-7467-9616-9640-01caed36814e'}
+2026-05-07 18:22:23,500 - UAV_System - INFO - PromptOptimizer 输出(rule): 任务地点：杭州电子科技大学。 任务目标：执行车速检测巡航任务，生成一条闭合航迹覆盖目标区域。 执行步骤：先获取地点POI并生成AOI航点（含默认高度altitude），再规划航迹。 输出要求：生成可导入大疆司空2的KMZ(WPML)文件，并返回生成文件的绝对路径。
+2026-05-07 18:22:23,548 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'ec84f08f-6b88-9258-b82d-b5978e259798'}
+2026-05-07 18:22:23,549 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学
+2026-05-07 18:22:23,551 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学
+2026-05-07 18:22:23,552 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 18:22:25,373 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 18:22:25,373 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学'}
+2026-05-07 18:22:25,588 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.379525,30.301471', 'level': '兴趣点'}]}
+2026-05-07 18:22:25,588 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学 (latitude: 30.301471, longitude: 120.379525)
+2026-05-07 18:22:25,588 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 100.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 100.0}]
+2026-05-07 18:22:25,588 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 18:22:25,590 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 18:22:25,590 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 18:22:26,571 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 18:22:26,572 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 100.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 100.0}]}
+2026-05-07 18:22:26,580 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.2, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.300971, 'max_latitude': 30.301970999999998, 'min_longitude': 120.379025, 'max_longitude': 120.380025}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.2, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 100.0, 'max_altitude': 100.0, 'avg_altitude': 100.0, 'action_count': 0}}, 'error': None}
+2026-05-07 18:22:26,581 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 18:22:26,586 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 18:22:26,586 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 100.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 100.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 100.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 18:22:26,592 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1817, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 18:22:26'}, 'error': None}
+2026-05-07 18:44:35,187 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 18:44:35,762 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 18:44:35,762 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 18:44:35,763 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 18:44:39,236 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 18:44:39,237 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 18:45:02,300 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学进行车速检测，并生成KMZ文件。
+2026-05-07 18:45:23,894 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "车速检测任务.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "杭州电子科技大学车速检测任务已规划完成，KMZ文件已生成：$kmz.data.output_path"
+}
+2026-05-07 18:45:23,896 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学
+2026-05-07 18:45:23,899 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学
+2026-05-07 18:45:23,901 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 18:45:26,153 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 18:45:26,153 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学'}
+2026-05-07 18:45:26,299 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.379525,30.301471', 'level': '兴趣点'}]}
+2026-05-07 18:45:26,299 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学 (latitude: 30.301471, longitude: 120.379525)
+2026-05-07 18:45:26,299 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 120.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 120.0}]
+2026-05-07 18:45:26,299 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 18:45:26,301 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 18:45:26,301 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 18:45:27,063 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 18:45:27,063 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 120.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 120.0}]}
+2026-05-07 18:45:27,070 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.2, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.300971, 'max_latitude': 30.301970999999998, 'min_longitude': 120.379025, 'max_longitude': 120.380025}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.2, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 18:45:27,070 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: 车速检测任务.kmz
+2026-05-07 18:45:27,071 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 18:45:27,071 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 120.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': '车速检测任务.kmz'}
+2026-05-07 18:45:27,077 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: 车速检测任务.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/车速检测任务.kmz', 'output_filename': '车速检测任务.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1823, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 18:45:27'}, 'error': None}
+2026-05-07 21:12:29,038 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 21:13:06,857 - UAV_System - INFO - 收到用户指令: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 21:13:07,115 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 21:13:07,115 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 21:13:07,115 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 21:13:07,116 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 21:13:07,116 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学进行车速检测，并生成kmz文件
+2026-05-07 21:13:39,650 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学区域执行车速检测任务，并生成KMZ格式的结果文件。
+2026-05-07 21:14:08,000 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "车速检测任务.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "杭州电子科技大学区域的车速检测任务KMZ文件已生成，文件路径为：$kmz.data.output_path"
+}
+2026-05-07 21:14:08,001 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学
+2026-05-07 21:14:08,007 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学
+2026-05-07 21:14:08,011 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 21:14:10,127 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 21:14:10,127 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学'}
+2026-05-07 21:14:10,336 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.379525,30.301471', 'level': '兴趣点'}]}
+2026-05-07 21:14:10,337 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学 (latitude: 30.301471, longitude: 120.379525)
+2026-05-07 21:14:10,337 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 120.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 120.0}]
+2026-05-07 21:14:10,337 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 21:14:10,338 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 21:14:10,339 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 21:14:11,087 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 21:14:11,087 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 120.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 120.0}]}
+2026-05-07 21:14:11,096 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.2, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.300971, 'max_latitude': 30.301970999999998, 'min_longitude': 120.379025, 'max_longitude': 120.380025}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.2, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 21:14:11,096 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: 车速检测任务.kmz
+2026-05-07 21:14:11,097 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 21:14:11,097 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.301970999999998, 'longitude': 120.379025, 'altitude': 120.0}, {'latitude': 30.301970999999998, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.380025, 'altitude': 120.0}, {'latitude': 30.300971, 'longitude': 120.379025, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': '车速检测任务.kmz'}
+2026-05-07 21:14:11,104 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: 车速检测任务.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/车速检测任务.kmz', 'output_filename': '车速检测任务.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1823, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 21:14:11'}, 'error': None}
+2026-05-07 21:21:00,797 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 21:21:00,998 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 21:21:00,998 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 21:21:00,999 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 21:21:00,999 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件，文件名叫 abc.kmz
+2026-05-07 21:21:00,999 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件，文件名叫 abc.kmz
+2026-05-07 21:21:11,724 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区执行车速检测任务，并生成名为abc.kmz的KMZ文件。
+2026-05-07 21:21:43,337 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {"target_name": "杭州电子科技大学下沙校区"},
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {"waypoints": "$coordinates.aoi_waypoints"},
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {"waypoints": "$coordinates.aoi_waypoints", "output_filename": "abc.kmz"},
+      "save_as": "kmz"
+    }
+  ],
+  "final": "车速检测任务已规划，KMZ文件abc.kmz已生成。文件路径：$kmz.output_path"
+}
+2026-05-07 21:21:43,339 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 21:21:43,341 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 21:21:43,343 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 21:21:45,286 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 21:21:45,286 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 21:21:45,403 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 21:21:45,404 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 21:21:45,404 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 21:21:45,404 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 21:21:45,405 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 21:21:45,405 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 21:21:46,102 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 21:21:46,103 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 21:21:46,110 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 21:21:46,110 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 21:21:46,111 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 21:21:46,111 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 21:21:46,118 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 21:21:46'}, 'error': None}
+2026-05-07 21:22:43,893 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 21:22:44,096 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 21:22:44,096 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 21:22:44,097 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 21:22:44,097 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件，文件名叫 abc.kmz
+2026-05-07 21:22:44,097 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件，文件名叫 abc.kmz
+2026-05-07 21:22:57,155 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区执行车速检测任务，并生成KMZ文件，文件名为abc.kmz。
+2026-05-07 21:23:26,273 - UAV_System - INFO - [模型输出] {"steps":[{"agent":"perception","action":"get_coordinates","args":{"target_name":"杭州电子科技大学下沙校区"},"save_as":"coordinates"},{"agent":"planning","action":"generate_flight_plan","args":{"waypoints":"$coordinates.aoi_waypoints"},"save_as":"flight_plan"},{"agent":"planning","action":"generate_kmz","args":{"waypoints":"$coordinates.aoi_waypoints","output_filename":"mission.kmz"},"save_as":"kmz"}],"final":"车速检测任务已规划，KMZ文件已生成：mission.kmz，路径为：$kmz.data.output_path"}
+2026-05-07 21:23:26,274 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 21:23:26,276 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 21:23:26,277 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 21:23:30,737 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 21:23:30,737 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 21:23:30,944 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 21:23:30,945 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 21:23:30,945 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 21:23:30,945 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 21:23:30,947 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 21:23:30,947 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 21:23:31,554 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 21:23:31,554 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 21:23:31,565 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 21:23:31,566 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 21:23:31,569 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 21:23:31,569 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 21:23:31,575 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 21:23:31'}, 'error': None}
+2026-05-07 21:24:04,006 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 21:24:04,217 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 21:24:04,218 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 21:24:04,218 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 21:24:04,218 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:24:04,218 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:24:30,202 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区执行车速检测任务，并生成KMZ文件。
+2026-05-07 21:25:31,301 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "check_airspace_conflict",
+      "args": {
+        "route": "$flight_plan.route"
+      },
+      "save_as": "conflict_check"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "车速检测任务已规划完成，KMZ文件已生成：$kmz.data.output_path"
+}
+2026-05-07 21:25:31,303 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 21:25:31,310 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 21:25:31,313 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 21:25:33,010 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 21:25:33,010 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 21:25:33,277 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 21:25:33,278 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 21:25:33,278 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 21:25:33,278 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 21:25:33,280 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 21:25:33,280 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 21:25:34,049 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 21:25:34,049 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 21:25:34,056 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 21:25:34,056 - UAV_System - INFO - Planning Agent 正在检查空域冲突...
+2026-05-07 21:25:34,057 - UAV_System - INFO - Planning Tool 正在调用 airspace-monitor-mcp 检查航线冲突...
+2026-05-07 21:25:34,057 - UAV_System - ERROR - MCPManager: 找不到名为 airspace-monitor-mcp 的服务器配置。
+2026-05-07 21:25:34,057 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 21:25:34,057 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 21:25:34,058 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 21:25:34,066 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1817, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 21:25:34'}, 'error': None}
+2026-05-07 21:26:34,219 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 21:27:23,798 - UAV_System - INFO - 收到用户指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:27:24,126 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 21:27:24,126 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 21:27:24,126 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 21:27:24,127 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:27:24,127 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:27:54,948 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区进行车速检测，并生成KMZ文件。
+2026-05-07 21:28:26,633 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "KMZ文件已生成，保存为 mission.kmz，用于在杭州电子科技大学下沙校区进行车速检测任务。"
+}
+2026-05-07 21:28:26,636 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 21:28:26,646 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 21:28:26,654 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 21:28:28,951 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 21:28:28,952 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 21:28:29,383 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 21:28:29,384 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 21:28:29,384 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 21:28:29,384 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 21:28:29,387 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 21:28:29,392 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 21:28:30,213 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 21:28:30,213 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 21:28:30,222 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 21:28:30,222 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 21:28:30,222 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 21:28:30,223 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 21:28:30,231 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1815, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 21:28:30'}, 'error': None}
+2026-05-07 21:30:51,169 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 21:30:51,699 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 21:30:51,699 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 21:30:51,699 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 21:31:48,723 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:31:48,731 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:32:07,908 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区执行车速检测任务，并生成KMZ文件，文件名为“杭州电子科技大学下沙校区车速检测.kmz”。
+2026-05-07 21:32:32,147 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {"target_name": "杭州电子科技大学下沙校区"},
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {"waypoints": "$coordinates.aoi_waypoints"},
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {"waypoints": "$coordinates.aoi_waypoints", "output_filename": "mission.kmz"},
+      "save_as": "kmz"
+    }
+  ],
+  "final": "车速检测任务的KMZ文件已生成，路径为 $kmz.data.output_path。"
+}
+2026-05-07 21:32:32,150 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 21:32:32,163 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 21:32:32,165 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 21:32:33,860 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 21:32:33,861 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 21:32:34,042 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 21:32:34,043 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 21:32:34,043 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 21:32:34,043 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 21:32:34,045 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 21:32:34,045 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 21:32:34,783 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 21:32:34,783 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 21:32:34,789 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 21:32:34,789 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 21:32:34,790 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 21:32:34,790 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 21:32:34,797 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 21:32:34'}, 'error': None}
+2026-05-07 21:47:23,196 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 21:47:23,393 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 21:47:23,393 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 21:47:23,393 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 21:47:23,393 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:47:23,393 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:47:49,346 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区执行车速检测，并生成KMZ文件。
+2026-05-07 21:48:18,941 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "车速检测任务的KMZ文件已生成，文件名为 mission.kmz。"
+}
+2026-05-07 21:48:18,943 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 21:48:18,946 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 21:48:18,948 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 21:48:21,374 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 21:48:21,374 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 21:48:21,521 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 21:48:21,521 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 21:48:21,521 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 21:48:21,522 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 21:48:21,523 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 21:48:21,523 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 21:48:22,217 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 21:48:22,217 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 21:48:22,224 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 21:48:22,224 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 21:48:22,225 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 21:48:22,225 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 21:48:22,237 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1817, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 21:48:22'}, 'error': None}
+2026-05-07 21:54:35,905 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 21:54:36,429 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 21:54:36,429 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 21:54:36,429 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 21:54:39,673 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:54:39,675 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 21:54:51,365 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区进行车速检测，并生成名为“杭州电子科技大学下沙校区车速检测.kmz”的KMZ文件。
+2026-05-07 21:55:38,333 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "KMZ文件已生成，文件名为 mission.kmz，用于在杭州电子科技大学下沙校区进行车速检测。路径为 $kmz.data.output_path。"
+}
+2026-05-07 21:55:38,338 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 21:55:38,354 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 21:55:38,366 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 21:55:40,648 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 21:55:40,648 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 21:55:40,839 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 21:55:40,839 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 21:55:40,840 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 21:55:40,840 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 21:55:40,843 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 21:55:40,845 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 21:55:41,564 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 21:55:41,564 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 21:55:41,571 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 21:55:41,572 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 21:55:41,573 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 21:55:41,573 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 21:55:41,580 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 21:55:41'}, 'error': None}
+2026-05-07 21:58:17,114 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:00:57,647 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:00:58,102 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:00:58,102 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:00:58,102 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:01:15,348 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 22:01:15,350 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 22:01:33,944 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区进行车速检测，并生成KMZ文件。
+2026-05-07 22:02:03,772 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "KMZ文件已生成，输出路径为 $kmz.data.output_path。"
+}
+2026-05-07 22:02:03,774 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 22:02:03,779 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 22:02:03,783 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 22:02:06,286 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 22:02:06,286 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 22:02:06,437 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 22:02:06,438 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 22:02:06,438 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 22:02:06,439 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 22:02:06,442 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 22:02:06,447 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 22:02:07,150 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 22:02:07,150 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 22:02:07,156 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 22:02:07,158 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 22:02:07,158 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 22:02:07,160 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 22:02:07,166 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 22:02:07'}, 'error': None}
+2026-05-07 22:04:29,100 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:04:29,574 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:04:29,575 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:04:29,575 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:05:21,827 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 22:05:21,829 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 22:05:35,168 - UAV_System - INFO - PromptOptimizer 输出(llm): 对杭州电子科技大学下沙校区进行车速检测，并生成KMZ文件，文件名为“杭州电子科技大学下沙校区车速检测.kmz”。
+2026-05-07 22:06:08,661 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "KMZ文件已生成，文件名为 mission.kmz，路径为：$kmz.data.output_path"
+}
+2026-05-07 22:06:08,665 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 22:06:08,675 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 22:06:08,679 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 22:06:10,639 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 22:06:10,639 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 22:06:10,777 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 22:06:10,777 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 22:06:10,777 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 22:06:10,778 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 22:06:10,779 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 22:06:10,783 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 22:06:11,530 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 22:06:11,530 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 22:06:11,537 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 22:06:11,538 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 22:06:11,540 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 22:06:11,542 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 22:06:11,550 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 22:06:11'}, 'error': None}
+2026-05-07 22:07:02,996 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:07:03,450 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:07:03,450 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:07:03,451 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:11:25,012 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:11:25,403 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:11:25,403 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:11:25,403 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:11:55,261 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:11:55,614 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:11:55,614 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:11:55,614 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:14:43,540 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:14:44,011 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:14:44,011 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:14:44,011 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:15:38,489 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:15:38,939 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:15:38,939 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:15:38,939 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:15:50,202 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:15:50,569 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:15:50,569 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:15:50,569 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:16:12,270 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:16:12,632 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:16:12,632 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:16:12,632 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:16:30,923 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 22:16:31,265 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 22:16:31,265 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 22:16:31,265 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 22:41:17,744 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 22:41:17,747 - UAV_System - INFO - PromptOptimizer 输入: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 22:41:39,613 - UAV_System - INFO - PromptOptimizer 输出(llm): 调度无人机前往杭州电子科技大学下沙校区执行车辆速度检测任务，并生成KMZ格式的结果文件。
+2026-05-07 22:42:12,693 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "已成功调度无人机前往杭州电子科技大学下沙校区执行车辆速度检测任务，并生成KMZ文件：$kmz.data.output_path"
+}
+2026-05-07 22:42:12,697 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 22:42:12,704 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 22:42:12,710 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 22:42:16,205 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 22:42:16,205 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 22:42:16,395 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 22:42:16,396 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 22:42:16,396 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 22:42:16,397 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 22:42:16,401 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 22:42:16,406 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 22:42:17,156 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 22:42:17,156 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 22:42:17,163 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 22:42:17,164 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 22:42:17,165 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 22:42:17,166 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 22:42:17,173 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 22:42:17'}, 'error': None}
+2026-05-07 23:48:54,577 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-07 23:48:56,836 - UAV_System - INFO - 收到用户指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 23:48:57,071 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-07 23:48:57,072 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-07 23:48:57,072 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-07 23:48:57,073 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 23:48:57,073 - UAV_System - INFO - PromptOptimizer 输入: 派遣无人机对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-07 23:49:15,371 - UAV_System - INFO - PromptOptimizer 输出(llm): 派遣无人机前往杭州电子科技大学下沙校区执行车速检测任务，并生成KMZ文件。
+2026-05-07 23:49:45,960 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "KMZ文件已成功生成，文件名为 mission.kmz，路径为 $kmz.data.output_path。"
+}
+2026-05-07 23:49:45,962 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-07 23:49:45,965 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-07 23:49:45,969 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-07 23:49:47,785 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-07 23:49:47,786 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-07 23:49:47,951 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-07 23:49:47,952 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-07 23:49:47,952 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-07 23:49:47,955 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-07 23:49:47,956 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-07 23:49:47,958 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-07 23:49:48,658 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-07 23:49:48,658 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-07 23:49:48,665 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-07 23:49:48,665 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-07 23:49:48,666 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-07 23:49:48,667 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-07 23:49:48,676 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1816, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-07 23:49:48'}, 'error': None}
+2026-05-08 11:00:35,351 - UAV_System - INFO - 收到用户指令: 派遣无人机对杭州电子科技大学下沙校区第四教学楼进行车速检测，并生成kmz文件
+2026-05-08 11:00:35,364 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区第四教学楼进行车速检测，并生成kmz文件
+2026-05-08 11:00:35,365 - UAV_System - INFO - PromptOptimizer 输入: 派遣无人机对杭州电子科技大学下沙校区第四教学楼进行车速检测，并生成kmz文件
+2026-05-08 11:00:54,319 - UAV_System - INFO - PromptOptimizer 输出(llm): 派遣无人机前往杭州电子科技大学下沙校区第四教学楼，执行车速检测任务，并生成KMZ文件。
+2026-05-08 11:01:03,909 - UAV_System - INFO - [模型输出] ```json
+{"steps":[{"agent":"perception","action":"get_coordinates","args":{"target_name":"杭州电子科技大学下沙校区第四教学楼"},"save_as":"coordinates"},{"agent":"planning","action":"generate_flight_plan","args":{"waypoints":"$coordinates.aoi_waypoints"},"save_as":"flight_plan"},{"agent":"planning","action":"generate_kmz","args":{"waypoints":"$coordinates.aoi_waypoints","output_filename":"mission.kmz"},"save_as":"kmz"}],"final":"已为您生成前往杭州电子科技大学下沙校区第四教学楼执行车速检测任务的KMZ飞行计划文件。\n\n📍 目标位置：杭州电子科技大学下沙校区第四教学楼\n📄 KMZ文件名：$kmz.data.output_filename\n📂 文件路径：$kmz.data.output_path\n\n请将KMZ文件导入大疆司空2系统执行任务。"}
+```
+2026-05-08 11:01:03,911 - UAV_System - ERROR - 模型调用失败，进入离线降级模式: Expecting value: line 1 column 1 (char 0)
+2026-05-08 11:01:03,920 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区第四教学楼
+2026-05-08 11:01:03,929 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区第四教学楼
+2026-05-08 11:01:03,941 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区第四教学楼'}
+2026-05-08 11:01:04,242 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.338026,30.316076', 'level': '兴趣点'}]}
+2026-05-08 11:01:04,242 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区第四教学楼 (latitude: 30.316076, longitude: 120.338026)
+2026-05-08 11:01:04,242 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.316575999999998, 'longitude': 120.337526, 'altitude': 120.0}, {'latitude': 30.316575999999998, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.337526, 'altitude': 120.0}]
+2026-05-08 11:01:04,243 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-08 11:01:04,244 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-08 11:01:04,245 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.316575999999998, 'longitude': 120.337526, 'altitude': 120.0}, {'latitude': 30.316575999999998, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.337526, 'altitude': 120.0}]}
+2026-05-08 11:01:04,451 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.17, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.315576, 'max_latitude': 30.316575999999998, 'min_longitude': 120.337526, 'max_longitude': 120.338526}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.17, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-08 11:01:04,452 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-08 11:01:04,453 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-08 11:01:04,453 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.316575999999998, 'longitude': 120.337526, 'altitude': 120.0}, {'latitude': 30.316575999999998, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.337526, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-08 11:01:04,482 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1817, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-08 11:01:04'}, 'error': None}
+2026-05-08 11:04:11,045 - UAV_System - INFO - 收到用户指令: 派遣无人机对杭州电子科技大学下沙校区第四教学楼进行车速检测，并生成kmz文件
+2026-05-08 11:04:11,049 - UAV_System - INFO - Orchestrator 接收到指令: 派遣无人机对杭州电子科技大学下沙校区第四教学楼进行车速检测，并生成kmz文件
+2026-05-08 11:04:11,049 - UAV_System - INFO - PromptOptimizer 输入: 派遣无人机对杭州电子科技大学下沙校区第四教学楼进行车速检测，并生成kmz文件
+2026-05-08 11:04:37,334 - UAV_System - INFO - PromptOptimizer 输出(llm): 调度无人机前往杭州电子科技大学下沙校区第四教学楼，执行车速检测任务，并生成KMZ文件。
+2026-05-08 11:05:04,570 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区第四教学楼"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    }
+  ],
+  "final": "调度无人机前往杭州电子科技大学下沙校区第四教学楼执行车速检测任务，KMZ文件已生成，文件名为 mission.kmz，路径为 $kmz.output_path。"
+}
+2026-05-08 11:05:04,575 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区第四教学楼
+2026-05-08 11:05:04,595 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区第四教学楼
+2026-05-08 11:05:04,607 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区第四教学楼'}
+2026-05-08 11:05:05,049 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.338026,30.316076', 'level': '兴趣点'}]}
+2026-05-08 11:05:05,049 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区第四教学楼 (latitude: 30.316076, longitude: 120.338026)
+2026-05-08 11:05:05,049 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.316575999999998, 'longitude': 120.337526, 'altitude': 120.0}, {'latitude': 30.316575999999998, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.337526, 'altitude': 120.0}]
+2026-05-08 11:05:05,050 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-08 11:05:05,050 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-08 11:05:05,051 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.316575999999998, 'longitude': 120.337526, 'altitude': 120.0}, {'latitude': 30.316575999999998, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.337526, 'altitude': 120.0}]}
+2026-05-08 11:05:05,078 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.17, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.315576, 'max_latitude': 30.316575999999998, 'min_longitude': 120.337526, 'max_longitude': 120.338526}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.17, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-08 11:05:05,079 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-08 11:05:05,080 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-08 11:05:05,080 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.316575999999998, 'longitude': 120.337526, 'altitude': 120.0}, {'latitude': 30.316575999999998, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.338526, 'altitude': 120.0}, {'latitude': 30.315576, 'longitude': 120.337526, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-08 11:05:05,095 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1817, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-08 11:05:05'}, 'error': None}
+2026-05-08 11:55:13,409 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-08 11:55:14,050 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-08 11:55:14,050 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-08 11:55:14,050 - UAV_System - INFO - Orchestrator Agent (LangGraph ReAct) 初始化完成
+2026-05-08 11:56:40,712 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测
+2026-05-08 11:56:40,718 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测
+2026-05-08 11:56:58,277 - UAV_System - INFO - PromptOptimizer 输出(llm): 在杭州电子科技大学下沙校区执行车速检测任务。
+2026-05-08 11:57:25,949 - UAV_System - INFO - [模型输出] {
+  "steps": [
+    {
+      "agent": "perception",
+      "action": "get_coordinates",
+      "args": {
+        "target_name": "杭州电子科技大学下沙校区"
+      },
+      "save_as": "coordinates"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_flight_plan",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints"
+      },
+      "save_as": "flight_plan"
+    },
+    {
+      "agent": "planning",
+      "action": "generate_kmz",
+      "args": {
+        "waypoints": "$coordinates.aoi_waypoints",
+        "output_filename": "mission.kmz"
+      },
+      "save_as": "kmz"
+    },
+    {
+      "agent": "planning",
+      "action": "check_airspace_conflict",
+      "args": {
+        "route": "$flight_plan.route"
+      },
+      "save_as": "conflict_check"
+    }
+  ],
+  "final": "车速检测任务已规划完成。目标坐标已获取：$coordinates.location，飞行计划已生成：$flight_plan.summary，KMZ文件已保存为 $kmz.output_path，空域冲突检查结果：$conflict_check.status。"
+}
+2026-05-08 11:57:25,954 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-08 11:57:25,967 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-08 11:57:25,973 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-08 11:57:30,158 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-08 11:57:30,159 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-08 11:57:30,414 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-08 11:57:30,414 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-08 11:57:30,414 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-08 11:57:30,415 - UAV_System - INFO - Planning Agent 正在规划航线，共 4 个航点
+2026-05-08 11:57:30,417 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 规划航线，共接收到 4 个航点
+2026-05-08 11:57:30,422 - UAV_System - INFO - MCPManager: 正在尝试连接 dji-waypoint-mcp (command: /Users/Zhuanz/anaconda3/envs/agent/bin/python -m src.dji_waypoint_mcp.server)
+2026-05-08 11:57:31,182 - UAV_System - INFO - MCPManager: 成功连接到 dji-waypoint-mcp。
+2026-05-08 11:57:31,182 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [plan_waypoint_mission]，参数: {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]}
+2026-05-08 11:57:31,188 - UAV_System - INFO - MCPManager: 工具 [plan_waypoint_mission] 返回 JSON 结果: {'success': True, 'message': 'Waypoint mission planned successfully with 4 waypoints', 'data': {'flight_path': {'waypoint_count': 4, 'total_distance': 303.18, 'estimated_flight_time': 60.6, 'bounding_box': {'min_latitude': 30.314522, 'max_latitude': 30.315521999999998, 'min_longitude': 120.338616, 'max_longitude': 120.339616}}, 'configuration': {'aircraft_type': 'M30', 'flight_speed': 5.0, 'height_mode': 'EGM96', 'heading_mode': 'followWayline', 'turn_mode': 'toPointAndStopWithDiscontinuityCurvature'}, 'safety_validation': {'is_valid': True, 'warnings': [], 'errors': []}, 'statistics': {'total_distance': 303.18, 'estimated_flight_time': 60.6, 'waypoint_count': 4, 'min_altitude': 120.0, 'max_altitude': 120.0, 'avg_altitude': 120.0, 'action_count': 0}}, 'error': None}
+2026-05-08 11:57:31,189 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-08 11:57:31,190 - UAV_System - INFO - Planning Tool 正在调用 dji-waypoint-mcp 生成 KMZ 文件，共接收到 4 个航点
+2026-05-08 11:57:31,192 - UAV_System - INFO - MCPManager: 正在调用 dji-waypoint-mcp 的工具 [generate_kmz]，参数: {'flight_plan': {'waypoints': [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}], 'flight_speed': 5.0}, 'output_filename': 'mission.kmz'}
+2026-05-08 11:57:31,198 - UAV_System - INFO - MCPManager: 工具 [generate_kmz] 返回 JSON 结果: {'success': True, 'message': 'KMZ file generated successfully: mission.kmz', 'data': {'output_path': '/Users/Zhuanz/Desktop/UAVCDS/dji-waypoint-mcp-main/output/mission.kmz', 'output_filename': 'mission.kmz', 'file_size': '1.8 KB', 'file_size_bytes': 1815, 'waypoint_count': 4, 'includes_template': True, 'includes_resources': False, 'generation_time': '2026-05-08 11:57:31'}, 'error': None}
+2026-05-08 11:57:31,198 - UAV_System - INFO - Planning Agent 正在检查空域冲突...
+2026-05-08 11:57:31,198 - UAV_System - INFO - Planning Tool 正在调用 airspace-monitor-mcp 检查航线冲突...
+2026-05-08 11:57:31,198 - UAV_System - ERROR - MCPManager: 找不到名为 airspace-monitor-mcp 的服务器配置。
+2026-05-11 20:47:28,851 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-11 20:47:29,055 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-11 20:47:29,055 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-11 20:47:44,381 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-11 20:47:44,569 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-11 20:47:44,569 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-11 20:47:44,579 - UAV_System - INFO - Orchestrator Agent (LangGraph create_react_agent) 初始化完成
+2026-05-11 20:50:49,955 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-11 20:50:50,611 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-11 20:50:50,611 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp 与 airspace-monitor-mcp
+2026-05-11 20:50:50,622 - UAV_System - INFO - Orchestrator Agent (LangGraph create_react_agent) 初始化完成
+2026-05-11 20:52:55,809 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-11 20:52:55,816 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-11 20:53:27,221 - UAV_System - INFO - PromptOptimizer 输出(llm): 对杭州电子科技大学下沙校区进行车速检测，并生成KMZ文件。
+2026-05-11 20:53:30,659 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-11 20:53:30,662 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-11 20:53:30,664 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-11 20:53:33,183 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-11 20:53:33,184 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-11 20:53:33,308 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-11 20:53:33,308 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-11 20:53:33,308 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-11 20:53:50,902 - UAV_System - INFO - Planning Agent 正在检查空域冲突...
+2026-05-11 20:53:50,905 - UAV_System - INFO - Planning Tool 正在调用 airspace-monitor-mcp 检查航线冲突...
+2026-05-11 20:53:50,907 - UAV_System - ERROR - MCPManager: 找不到名为 airspace-monitor-mcp 的服务器配置。
+2026-05-11 20:53:57,402 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-11 20:53:57,407 - UAV_System - ERROR - 格式化工具追踪失败: 'str' object has no attribute 'get'
+2026-05-11 20:54:00,668 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-11 20:54:00,673 - UAV_System - ERROR - 格式化工具追踪失败: 'str' object has no attribute 'get'
+2026-05-11 20:54:03,799 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-11 20:54:03,804 - UAV_System - ERROR - 格式化工具追踪失败: 'str' object has no attribute 'get'
+2026-05-11 20:54:09,068 - UAV_System - INFO - Planning Agent 正在规划航线，共 276 个航点
+2026-05-11 20:54:09,072 - UAV_System - ERROR - 格式化工具追踪失败: 'str' object has no attribute 'get'
+2026-05-11 21:01:15,412 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-11 21:01:15,873 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-11 21:01:15,874 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp
+2026-05-11 21:01:15,882 - UAV_System - INFO - Orchestrator Agent (LangGraph create_react_agent) 初始化完成
+2026-05-11 21:01:38,825 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-11 21:01:38,827 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-11 21:01:52,673 - UAV_System - INFO - PromptOptimizer 输出(llm): 针对杭州电子科技大学下沙校区进行车辆速度检测，并将检测结果生成为KMZ文件。
+2026-05-11 21:01:57,890 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-11 21:01:57,892 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-11 21:01:57,893 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-11 21:01:59,493 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-11 21:01:59,493 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-11 21:01:59,644 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-11 21:01:59,644 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-11 21:01:59,644 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
+2026-05-11 21:02:11,768 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-11 21:02:15,219 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-11 21:02:18,863 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-11 21:02:22,503 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-11 21:02:27,007 - UAV_System - INFO - Planning Agent 正在生成 KMZ 文件: mission.kmz
+2026-05-11 21:02:30,800 - UAV_System - INFO - Planning Agent 正在规划航线，共 268 个航点
+2026-05-11 21:08:31,155 - UAV_System - INFO - MCPManager: 已加载 3 个 MCP 服务器配置。
+2026-05-11 21:08:31,688 - UAV_System - INFO - Perception Agent 初始化完成，准备挂载 Playwright MCP
+2026-05-11 21:08:31,688 - UAV_System - INFO - Planning Agent 初始化完成，准备挂载 dji-waypoint-mcp
+2026-05-11 21:08:31,697 - UAV_System - INFO - Orchestrator Agent (LangGraph create_react_agent) 初始化完成
+2026-05-11 21:08:34,258 - UAV_System - INFO - Orchestrator 接收到指令: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-11 21:08:34,260 - UAV_System - INFO - PromptOptimizer 输入: 对杭州电子科技大学下沙校区进行车速检测，并生成kmz文件
+2026-05-11 21:09:05,916 - UAV_System - INFO - PromptOptimizer 输出(llm): 对杭州电子科技大学下沙校区进行车辆速度检测，并生成KMZ文件。
+2026-05-11 21:09:08,186 - UAV_System - INFO - Perception Agent 正在获取地点 POI/AOI: 杭州电子科技大学下沙校区
+2026-05-11 21:09:08,187 - UAV_System - INFO - Orchestrator Tool 正在调用 amap-maps 查询坐标: 杭州电子科技大学下沙校区
+2026-05-11 21:09:08,189 - UAV_System - INFO - MCPManager: 正在尝试连接 amap-maps (command: npx -y @amap/amap-maps-mcp-server)
+2026-05-11 21:09:11,382 - UAV_System - INFO - MCPManager: 成功连接到 amap-maps。
+2026-05-11 21:09:11,382 - UAV_System - INFO - MCPManager: 正在调用 amap-maps 的工具 [maps_geo]，参数: {'address': '杭州电子科技大学下沙校区'}
+2026-05-11 21:09:11,528 - UAV_System - INFO - MCPManager: 工具 [maps_geo] 返回 JSON 结果: {'return': [{'country': '中国', 'province': '浙江省', 'city': '杭州市', 'citycode': '0571', 'district': '钱塘区', 'street': [], 'number': [], 'adcode': '330114', 'location': '120.339116,30.315022', 'level': '兴趣点'}]}
+2026-05-11 21:09:11,528 - UAV_System - INFO - POI 获取成功: 杭州电子科技大学下沙校区 (latitude: 30.315022, longitude: 120.339116)
+2026-05-11 21:09:11,529 - UAV_System - INFO - AOI 矩形区域已生成: [{'latitude': 30.315521999999998, 'longitude': 120.338616, 'altitude': 120.0}, {'latitude': 30.315521999999998, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.339616, 'altitude': 120.0}, {'latitude': 30.314522, 'longitude': 120.338616, 'altitude': 120.0}]
